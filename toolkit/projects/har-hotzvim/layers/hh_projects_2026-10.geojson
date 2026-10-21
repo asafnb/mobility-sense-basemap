@@ -1,0 +1,181 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.216269570396,
+          31.806102557942
+        ]
+      },
+      "properties": {
+        "name": "Road 22 (כביש 22)",
+        "name_he": "כביש 22 — כניסה צפונית להר חוצבים",
+        "name_en": "Road 22 (כביש 22)",
+        "year": 2027,
+        "status": "under_construction",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "New northern park entrance; ~1.3 km; 2+2 lanes + bus lane; bridges incl. Nahal Tzofim. Started Jun 2024. Park site: ~2027. Moria Sep 2026: open within ~1 year. Coords from Wikipedia published centroid. [source_published]",
+        "url": "https://he.wikipedia.org/wiki/%D7%9B%D7%91%D7%99%D7%A9_22_(%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D)",
+        "address": "Yigal Yadin / Ramat Shlomo interchange to Golda Meir / Hartom (northern Har Hotzvim entrance)",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.212534,
+          31.79987
+        ]
+      },
+      "properties": {
+        "name": "Gan Hotzvim (government tech campus)",
+        "name_he": "גן חוצבים — קמפוס טכנולוגי ממשלתי",
+        "name_en": "Gan Hotzvim (government tech campus)",
+        "year": 2031,
+        "status": "tendered_planned",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "3×~30-floor towers; ~150k m² offices + ~100k m² underground; gov computing + Police tech. Tunnel under Golda Meir. Globes Aug 2024: complete within ~7 years → ~2031. Year is estimate, not firm COD. Pin approximate at Golda/Hartom bus stop. [approximate_named_address_geocode]",
+        "url": "https://en.globes.co.il/en/article-tenders-issued-for-huge-jerusalem-office-projects-1001487938",
+        "address": "Near Golda Meir Blvd / Hartom entrance to Har Hotzvim (exact parcel not published in EN sources)",
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2121453,
+          31.8034379
+        ]
+      },
+      "properties": {
+        "name": "Rafa Laboratories tower",
+        "name_he": "מגדל מעבדות רפא (שלב ב')",
+        "name_en": "Rafa Laboratories tower",
+        "year": null,
+        "status": "planned",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "22 floors + 8 UG parking; ~63,500 m² for research companies. No firm 2027–28 COD found. Coords approximate (Zeev Lev street / factory area). [approximate_street_geocode]",
+        "url": "https://hotzvim.org.il/en/high-tech-park/about-the-park/",
+        "address": "Rafa Laboratories plot, Har Hotzvim (factory at Zeev Lev 3; western plot 6-story factory referenced)",
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2118063,
+          31.8020328
+        ]
+      },
+      "properties": {
+        "name": "Vitania Har Hotzvim redevelopment",
+        "name_he": "הרחבת ויתניה הר חוצבים",
+        "name_en": "Vitania Har Hotzvim redevelopment",
+        "year": null,
+        "status": "planned",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Expansion of building rights planned toward ~130,000 m² on 24,000 m² parcel. COD for 2027–28 not confirmed in primary sources. [nominatim_house_geocode]",
+        "url": "https://vitania.co.il/en/vitania-har-hotzvim-jerusalem/",
+        "address": "HaMarpe 2, Har Hotzvim (former Teva inhaler plant)",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2091651,
+          31.8035358
+        ]
+      },
+      "properties": {
+        "name": "Outline Plan 11616A — leisure / café tower (Intel parking lot)",
+        "name_he": "תוכנית 11616 א' — מגדל פנאי ובתי קפה",
+        "name_en": "Outline Plan 11616A — leisure / café tower (Intel parking lot)",
+        "year": null,
+        "status": "planned",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Public-space upgrade + tower with leisure / cafés replacing Intel open parking. Timing not published. Pin near Intel address as site proxy. [approximate_named_address_geocode]",
+        "url": "https://hotzvim.org.il/en/high-tech-park/about-the-park/",
+        "address": "Current Intel parking lot, Har Hotzvim (near HaMarpe 9 / Intel campus)",
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2097023,
+          31.8016529
+        ]
+      },
+      "properties": {
+        "name": "Outline Plan 11616 — five new plots + internal road",
+        "name_he": "תוכנית מתאר 11616 — חמישה מגרשים חדשים",
+        "name_en": "Outline Plan 11616 — five new plots + internal road",
+        "year": null,
+        "status": "planned",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Park-wide expansion plots; exact parcel coords not published. Pin at OSM Har Hotzvim suburb centroid as park reference only. [approximate_named_address_geocode]",
+        "url": "https://hotzvim.org.il/en/high-tech-park/about-the-park/",
+        "address": "Har Hotzvim (road linking Shlomo Halevi with road around former Teva tablets factory)",
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2097023,
+          31.8016529
+        ]
+      },
+      "properties": {
+        "name": "JDA / Municipality NIS 44M park infrastructure upgrade",
+        "name_he": "שדרוג תשתיות הפארק — 44 מיליון ₪",
+        "name_en": "JDA / Municipality NIS 44M park infrastructure upgrade",
+        "year": 2026,
+        "status": "completed",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Announced complete ~25 Sep 2026; six-year program. Food trucks expected soon after. Baseline for ops, not a 2027 COD. [approximate_named_address_geocode]",
+        "url": "https://www.jpost.com/business-and-innovation/article-909718",
+        "address": "Park-wide: roads, sidewalks, parking, lighting, plaza, underground waste",
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2139,
+          31.8006
+        ]
+      },
+      "properties": {
+        "name": "Jerusalem Blue Line light rail — Har Hotzvim / Hartom stations (access)",
+        "name_he": "הקו הכחול — תחנות הר חוצבים / הרטום (נגישות לפארק)",
+        "name_en": "Jerusalem Blue Line light rail — Har Hotzvim / Hartom stations (access)",
+        "year": "2031",
+        "status": "under_construction",
+        "source": "Sherlock research 2026-10-06",
+        "notes": "FACT: Blue Line (L6) planned stations include הר חוצבים and הרטום; northern portal of tunnel near Golda Meir / Har Hotzvim. Infra works underway in Har Hotzvim segment. Official staging: southern first stage ~Aug 2029; full northern incl. tunnel ~Dec 2031. INFERENCE: Har Hotzvim station service tied to northern package (~2031), not 2027–2028. Included for traffic/access impact.",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A7%D7%95_%D7%94%D7%9B%D7%97%D7%95%D7%9C_%D7%A9%D7%9C_%D7%94%D7%A8%D7%9B%D7%91%D7%AA_%D7%94%D7%A7%D7%9C%D7%94_%D7%91%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D",
+        "address": "Golda Meir Blvd corridor / Hartom — Har Hotzvim area, Jerusalem",
+        "confidence": "medium"
+      }
+    }
+  ]
+}
