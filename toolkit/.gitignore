@@ -1,0 +1,4 @@
+dist/
+__pycache__/
+*.pyc
+# heavy layer files live in Drive (see layers/layers.json storage)
