@@ -1,16 +1,15 @@
 """Create a new base version manifest = style version + pinned layer versions.
-Usage: python scripts/make_base.py v4 [--style s2] [--add LAYER] [--remove LAYER] [--pin LAYER=VERSION] [--note "..."]
+Usage: python scripts/make_base.py v4 [--style s2.0] [--credit "..."] [--add LAYER] [--remove LAYER] [--pin LAYER=VERSION] [--note "..."]
 Defaults: latest released style, the 'current' version of every layer in the previous base (+ --add)."""
 import os,sys,json,argparse,glob; sys.path.insert(0,os.path.dirname(__file__)); from lib import *
 ap=argparse.ArgumentParser(); ap.add_argument('version'); ap.add_argument('--style'); ap.add_argument('--from',dest='prev')
-ap.add_argument('--add',action='append',default=[]); ap.add_argument('--remove',action='append',default=[]); ap.add_argument('--pin',action='append',default=[]); ap.add_argument('--note',default='')
+ap.add_argument('--add',action='append',default=[]); ap.add_argument('--remove',action='append',default=[]); ap.add_argument('--pin',action='append',default=[]); ap.add_argument('--note',default=''); ap.add_argument('--credit',default='',help="who/what drove this release (goes into CHANGELOG)")
 a=ap.parse_args(); reg=registry()
 out=f"{ROOT}/base/{a.version}/manifest.json"
 if os.path.exists(out): sys.exit(f"{a.version} exists – base versions are immutable")
 bases=sorted(glob.glob(f"{ROOT}/base/v*/manifest.json"),key=lambda p:int(p.split('/')[-2][1:]))
 prev=load_json(f"{ROOT}/base/{a.prev}/manifest.json") if a.prev else (load_json(bases[-1]) if bases else None)
-styles=sorted(glob.glob(f"{ROOT}/style/versions/style_s*.json"),key=lambda p:int(p.split('_s')[-1][:-5]))
-sv=a.style or load_json(styles[-1])['style_version']; load_style(sv)
+sv=a.style or load_json(style_file(released_styles()[-1]))['style_version']; load_style(sv)
 ids=[l['id'] for l in prev['layers']] if prev else []
 ids=[i for i in ids if i not in a.remove]+[i for i in a.add if i not in ids]
 pins=dict(p.split('=') for p in a.pin)
@@ -32,6 +31,11 @@ if prev:
     for i in pv:
         if i not in nv: ch.append(f"- שכבה הוסרה: `{i}`")
 if a.note: ch.append(f"- הערה: {a.note}")
+if a.credit: ch.append(f"- קרדיט: {a.credit}")
+rel=f"{ROOT}/style/releases/{sv}"
+if prev and prev['style_version']!=sv and os.path.isdir(rel):
+    pngs=sorted(os.path.relpath(p,ROOT) for p in glob.glob(f"{rel}/*.png"))
+    if pngs: ch.append("- לפני/אחרי (רינדור GeoLibre Web): "+", ".join(f"`{p}`" for p in pngs))
 if len(ch)==1: ch.append("- ללא שינוי בשכבות/עיצוב")
 cp=f"{ROOT}/base/CHANGELOG.md"; old=open(cp).read() if os.path.exists(cp) else "# CHANGELOG – מפת הבסיס\n\n"
 head,_,rest=old.partition("\n\n"); open(cp,'w').write(head+"\n\n"+"\n".join(ch)+"\n\n"+rest)
