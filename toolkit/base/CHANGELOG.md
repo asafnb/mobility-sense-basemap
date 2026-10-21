@@ -1,5 +1,14 @@
 # CHANGELOG – מפת הבסיס
 
+## v4 – 2026-10-21
+- עיצוב: s1 → s2.0
+- הערה: עיצוב s2.0 לפי סקירת העיצוב של Carto: קיים=רציף, בביצוע=קו חלול, מתוכנן=מקווקו (ריבועים לבנים); פסי זום ורוחבים; תיקוני באגים (קו אדום קיים בירושלים, LRT ומסילות לפי סטטוס, בלי בוטל/מוקפא, מקרא)
+- קרדיט: סקירת העיצוב של Carto (21.10.2026, /workspace/carto/geolibre-review/review.md)
+- תיקונים: קו אדום קיים בירושלים צבוע נכון; רכבת קלה ומסילות לפי קיים/בביצוע/מתוכנן (לא פעיל וחדש 2030/2040 = מתוכנן); תשתית רכיבה מתוכננת בלי בוטל/מוקפא; אופנידן לפי הסטטוסים האמיתיים (HOLD לא מוצג); fillOpacity של קווים = 1; מטרו #312E81; מתוכנן מתחת לקיים; מקרא מלמעלה למטה.
+- שכבות נגזרות חדשות (אותם נתונים, מסנן אחר): `lrt_line__plan`, `lrt_line__plan_nat`, `lrt_line__constr`, `lrt_line__constr_core`, `rail_strategic__plan`, `rail_strategic__plan_nat`, `brt_line__nat`, `brt_line__constr`, `brt_line__constr_core`, `metro_line__nat`, `ofneidan__plan`, `ofneidan__constr`, `ofneidan__constr_core`. גרסאות הנתונים לא השתנו (2026-10).
+- פרטים: `style/releases/s2.0/RELEASE.md`. לפני/אחרי (רינדור GeoLibre Web): `style/releases/s2.0/national_compare.png`, `tel-aviv_compare.png`, `jerusalem_compare.png`, `har-hotzvim_compare.png`.
+- פרויקט `har-hotzvim` שודרג ל־p2 על v4: כביש 22 (ירושלים) כקו חלול (בביצוע), צבעים מטוקני PROJ_*, רשומות מקרא משלו.
+
 ## v3 – 2026-10-21
 - מעבר למבנה גרסאות: עיצוב `s1` (style/versions/style_s1.json) + 17 שכבות ארציות בגרסה `2026-10`.
 - הבסיס מכיל רק שכבות ארציות. שכבות הר החוצבים (חברות, פרויקטים, כביש 22 ירושלים) עברו לפרויקט `har-hotzvim` (p1).
