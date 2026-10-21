@@ -1,0 +1,1130 @@
+{
+ "registry_version": 1,
+ "updated": "2026-10-21",
+ "github_size_limit_bytes": 512000,
+ "_doc": "כל שכבה: מטא־דאטה + רשימת גרסאות. קבצים מתוארכים ב־data/layers/<id>/<id>_<YYYY-MM>.geojson; אף פעם לא דורסים גרסה. storage=github → נכנס לריפו (קטן); drive → רק בדרייב.",
+ "layers": {
+  "nataz_kayam": {
+   "title": "נת״צ קיימים",
+   "group": "g_nataz",
+   "drive_folder": "nataz",
+   "drive_folder_id": "1ccHoKntnfd1KRVLwYhDkqWLv29Vh7Iq7",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/nataz_kayam",
+    "endpoint": "https://data.gov.il/dataset/4bee0109-501e-4ae0-aa9e-a70f713b84d0/resource/fa793198-ad02-46c5-bf17-be08fdb912b0/download/nataz_kayam.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=nataz_kayam"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "מסונן: STATUS≠מבוטל",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "PTLNAME",
+    "fields": [
+     [
+      "PTLNAME",
+      "שם"
+     ],
+     [
+      "STATUS",
+      "סטטוס"
+     ],
+     [
+      "PTLTYPE",
+      "סוג"
+     ],
+     [
+      "AUTHORITY",
+      "רשות"
+     ],
+     [
+      "TRAFAUTH",
+      "רשות תמרור"
+     ],
+     [
+      "PTLDIR",
+      "כיוון"
+     ],
+     [
+      "FRHR_WK",
+      "שעת התחלה (חול)"
+     ],
+     [
+      "TOHR_WK",
+      "שעת סיום (חול)"
+     ],
+     [
+      "LENGT",
+      "אורך (מ׳)"
+     ],
+     [
+      "LASTCHANGE",
+      "עדכון אחרון"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-07-22",
+     "file": "data/layers/nataz_kayam/nataz_kayam_2026-10.geojson",
+     "bytes": 2417717,
+     "features": 1106,
+     "sha256": "652dfad2b8a0f502",
+     "storage": "drive",
+     "drive_file_id": "1eMCIv475qqzrZichdIiVoDlx2mZ4YYKt",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "nataz_planned": {
+   "title": "נת״צ מתוכננים",
+   "group": "g_nataz",
+   "drive_folder": "nataz",
+   "drive_folder_id": "1ccHoKntnfd1KRVLwYhDkqWLv29Vh7Iq7",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/nataz_planned",
+    "endpoint": "https://data.gov.il/dataset/75812a55-3f2c-4cec-9e54-d1a977cabdb7/resource/fbcc4ecb-9844-4573-847d-fd10ebd04fa6/download/nataz_planned.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=nataz_planned"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "PTLNAME",
+    "fields": [
+     [
+      "PTLNAME",
+      "שם"
+     ],
+     [
+      "STATUS",
+      "סטטוס"
+     ],
+     [
+      "PTLTYPE",
+      "סוג"
+     ],
+     [
+      "AUTHORITY",
+      "רשות"
+     ],
+     [
+      "ROADNAME",
+      "כביש"
+     ],
+     [
+      "INAUGUR",
+      "מועד פתיחה"
+     ],
+     [
+      "PLANOPER",
+      "גורם מתכנן"
+     ],
+     [
+      "EXECOPER",
+      "גורם מבצע"
+     ],
+     [
+      "SOURCE",
+      "מקור"
+     ],
+     [
+      "LENGTH_M",
+      "אורך (מ׳)"
+     ],
+     [
+      "LASTCHANGE",
+      "עדכון אחרון"
+     ]
+    ]
+   },
+   "web": {
+    "fields": [
+     "PTLNAME",
+     "STATUS",
+     "AUTHORITY",
+     "ROADNAME",
+     "INAUGUR"
+    ],
+    "merge": true
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-07-22",
+     "file": "data/layers/nataz_planned/nataz_planned_2026-10.geojson",
+     "bytes": 7407546,
+     "features": 3458,
+     "sha256": "a9e86c6922889f87",
+     "storage": "drive",
+     "drive_file_id": "10yxS1EOcp7i7nav_pqbtE1pJ-Wkv4Eqf",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "bph_infra_exist": {
+   "title": "תשתית רכיבה קיימת",
+   "group": "g_bike",
+   "drive_folder": "bike",
+   "drive_folder_id": "1IXgWYqEFXWZc165jKFpvhMDPFE4shLNJ",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/bph_infra_exist",
+    "endpoint": "https://data.gov.il/dataset/c425e549-60b4-4523-badd-de6886d81306/resource/abb1f19f-4482-40df-9da8-bf0bf126bf9e/download/bph_infra_exist.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=bph_infra_exist"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "מוצג מזום 9",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "STREETNAME",
+    "fields": [
+     [
+      "STREETNAME",
+      "רחוב"
+     ],
+     [
+      "AUTHORITY",
+      "רשות"
+     ],
+     [
+      "BPHType",
+      "סוג"
+     ],
+     [
+      "DirType",
+      "כיווניות"
+     ],
+     [
+      "OPEN_YEAR",
+      "שנת פתיחה"
+     ],
+     [
+      "USABLE",
+      "שמישות"
+     ],
+     [
+      "LENGTH_M",
+      "אורך (מ׳)"
+     ]
+    ]
+   },
+   "web": {
+    "fields": [
+     "STREETNAME",
+     "AUTHORITY",
+     "BPHType",
+     "OPEN_YEAR"
+    ],
+    "merge": true
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2025-03-02",
+     "file": "data/layers/bph_infra_exist/bph_infra_exist_2026-10.geojson",
+     "bytes": 14995485,
+     "features": 10476,
+     "sha256": "8f7ed98bc51518e5",
+     "storage": "drive",
+     "drive_file_id": "1nW938p1kg5alG5wwNDdfojVG9fJUwWPR",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "bph_infra_plan": {
+   "title": "תשתית רכיבה מתוכננת",
+   "group": "g_bike",
+   "drive_folder": "bike",
+   "drive_folder_id": "1IXgWYqEFXWZc165jKFpvhMDPFE4shLNJ",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/bph_infra_plan",
+    "endpoint": "https://data.gov.il/dataset/6c31fbf5-69f7-4aac-b61f-43c8c4a2768e/resource/2868b53e-5edb-4b9b-8dd0-abd793eac974/download/bph_infra_plan.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=bph_infra_plan"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "מוצג מזום 9",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "STREETNAME",
+    "fields": [
+     [
+      "STREETNAME",
+      "רחוב"
+     ],
+     [
+      "AUTHORITY",
+      "רשות"
+     ],
+     [
+      "STATUS",
+      "סטטוס"
+     ],
+     [
+      "STARTDATE",
+      "תחילת ביצוע"
+     ],
+     [
+      "FINISHDATE",
+      "סיום"
+     ],
+     [
+      "PROJOPER",
+      "גורם מבצע"
+     ],
+     [
+      "LEN",
+      "אורך (מ׳)"
+     ]
+    ]
+   },
+   "web": {
+    "fields": [
+     "STREETNAME",
+     "AUTHORITY",
+     "STATUS",
+     "FINISHDATE"
+    ],
+    "merge": true
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-08-12",
+     "file": "data/layers/bph_infra_plan/bph_infra_plan_2026-10.geojson",
+     "bytes": 4848416,
+     "features": 3100,
+     "sha256": "f2e0b282c8ded4a6",
+     "storage": "drive",
+     "drive_file_id": "1Ia1uPDfPfW7-7zY6AhdYvSwVcES8MZlv",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "ofneidan": {
+   "title": "אופנידן",
+   "group": "g_bike",
+   "drive_folder": "bike",
+   "drive_folder_id": "1IXgWYqEFXWZc165jKFpvhMDPFE4shLNJ",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/ofneidan",
+    "endpoint": "https://data.gov.il/dataset/0ec0c9e6-36f0-4ca2-8e93-c9a394786455/resource/06cf6cd4-32d2-424b-ae41-5236b14b3c35/download/ofneidan.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=ofneidan"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "DP_NAME",
+    "fields": [
+     [
+      "DP_NAME",
+      "שם"
+     ],
+     [
+      "DP_DESC",
+      "תיאור"
+     ],
+     [
+      "STATUS",
+      "סטטוס"
+     ],
+     [
+      "COMP",
+      "גורם"
+     ],
+     [
+      "LENGT",
+      "אורך (מ׳)"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2025-09-01",
+     "file": "data/layers/ofneidan/ofneidan_2026-10.geojson",
+     "bytes": 641341,
+     "features": 193,
+     "sha256": "461ccc5ae872f5a7",
+     "storage": "drive",
+     "drive_file_id": "18P8qNBa4IzOOatE6MJypRIOaV5tvQHsX",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "bicycle_jer_2019": {
+   "title": "שבילי אופניים – ירושלים (2019)",
+   "group": "g_bike",
+   "drive_folder": "bike",
+   "drive_folder_id": "1IXgWYqEFXWZc165jKFpvhMDPFE4shLNJ",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/bicycle_jer_2019",
+    "endpoint": "https://data.gov.il/dataset/599ab172-b57a-4054-b734-da6ddd662ffd/resource/e40b1fdb-59f5-4c16-8bcb-8fcc73f913e9/download/bicycle_jer_2019.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=bicycle_jer_2019"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "name",
+    "fields": [
+     [
+      "name",
+      "שם"
+     ],
+     [
+      "status",
+      "סטטוס"
+     ],
+     [
+      "Year",
+      "שנה"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2021-03-07",
+     "file": "data/layers/bicycle_jer_2019/bicycle_jer_2019_2026-10.geojson",
+     "bytes": 170307,
+     "features": 60,
+     "sha256": "b46e714dbff7f15b",
+     "storage": "github+drive",
+     "drive_file_id": "1TakTsKDJnV61imDlr-Z6yxi8BtYs35CD",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "lrt_line": {
+   "title": "קווי רכבת קלה",
+   "group": "g_lrt",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/lrt_line",
+    "endpoint": "https://data.gov.il/dataset/b65ae5cf-8aab-4b8e-ae08-de941368fff0/resource/9d98bcd1-8399-47fe-b9b2-af8971b0a16d/download/lrt_line.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=lrt_line"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "צבע לפי שדה NAME",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "NAME",
+    "fields": [
+     [
+      "NAME",
+      "קו"
+     ],
+     [
+      "LINE_EG",
+      "Line"
+     ],
+     [
+      "STATUS",
+      "סטטוס"
+     ],
+     [
+      "START_",
+      "מוצא"
+     ],
+     [
+      "DESTNATION",
+      "יעד"
+     ],
+     [
+      "MTR_AREA",
+      "מטרופולין"
+     ],
+     [
+      "FREQ",
+      "תדירות (דק׳)"
+     ],
+     [
+      "COMP",
+      "חברה"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-03-22",
+     "file": "data/layers/lrt_line/lrt_line_2026-10.geojson",
+     "bytes": 333120,
+     "features": 27,
+     "sha256": "b338fc62e05cefed",
+     "storage": "github+drive",
+     "drive_file_id": "1dI2ttSCDXyUGMp10eS1jhRUS0jQR1vbF",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "lrt_stat": {
+   "title": "תחנות רכבת קלה",
+   "group": "g_lrt",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/lrt_stat",
+    "endpoint": "https://data.gov.il/dataset/86fce9f0-0e5a-4012-8a84-86a233e83191/resource/93400849-51ff-42c9-a151-cbaee630ded2/download/lrt_stat.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=lrt_stat"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "STAT_NAME",
+    "fields": [
+     [
+      "STAT_NAME",
+      "תחנה"
+     ],
+     [
+      "LINE",
+      "קו"
+     ],
+     [
+      "STATUS",
+      "סטטוס"
+     ],
+     [
+      "TYPE",
+      "סוג"
+     ],
+     [
+      "ENTRC_EXIT",
+      "כניסה/יציאה"
+     ],
+     [
+      "MTR_AREA",
+      "מטרופולין"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-03-22",
+     "file": "data/layers/lrt_stat/lrt_stat_2026-10.geojson",
+     "bytes": 156817,
+     "features": 332,
+     "sha256": "84c20df57deaa14a",
+     "storage": "github+drive",
+     "drive_file_id": "1E1OZS68xOgB3noj2dynCX5e0vF1ocCHS",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "metro_line": {
+   "title": "קווי מטרו (גוש דן)",
+   "group": "g_metro",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/metro_line",
+    "endpoint": "https://data.gov.il/dataset/f10f7f97-7a1a-4516-9549-3f7025af5768/resource/ed60769d-a772-4894-860a-db289f21e612/download/metro_line.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=metro_line"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "NAME",
+    "fields": [
+     [
+      "NAME",
+      "קו"
+     ],
+     [
+      "DESCRPTION",
+      "תיאור"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-01-08",
+     "file": "data/layers/metro_line/metro_line_2026-10.geojson",
+     "bytes": 113507,
+     "features": 4,
+     "sha256": "345418022b82a899",
+     "storage": "github+drive",
+     "drive_file_id": "1WdnXJymGDL-EWsKbxYH9loa9jCW-x00-",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "metro_stat": {
+   "title": "תחנות מטרו",
+   "group": "g_metro",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/metro_stat",
+    "endpoint": "https://data.gov.il/dataset/dee4e199-1afa-436d-a6c7-ead366cc63f5/resource/2d0c5425-c1d8-4932-9995-3ccf6b8a24f2/download/metro_stat.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=metro_stat"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "NAME",
+    "fields": [
+     [
+      "NAME",
+      "תחנה"
+     ],
+     [
+      "NAMEENG",
+      "Station"
+     ],
+     [
+      "LINE",
+      "קו"
+     ],
+     [
+      "MASAD",
+      "קוד"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2024-06-24",
+     "file": "data/layers/metro_stat/metro_stat_2026-10.geojson",
+     "bytes": 29625,
+     "features": 109,
+     "sha256": "fc08c36b59f73afb",
+     "storage": "github+drive",
+     "drive_file_id": "164l7bfZKUh3-ogbr0NZWk4tvnS0DKADf",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "metro_line_jlm": {
+   "title": "מטרו – מטרופולין ירושלים",
+   "group": "g_metro",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/metro_line_jlm",
+    "endpoint": "https://data.gov.il/dataset/a98fbabc-acfd-4cf4-9c90-5102246ee267/resource/f717c289-d5a4-45c2-854a-0289af973314/download/metro_line_jlm.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=metro_line_jlm"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "LINE_NAME",
+    "fields": [
+     [
+      "LINE_NAME",
+      "קו"
+     ],
+     [
+      "YEAR",
+      "שנה"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-05-31",
+     "file": "data/layers/metro_line_jlm/metro_line_jlm_2026-10.geojson",
+     "bytes": 14022,
+     "features": 4,
+     "sha256": "5d9576ce430d7ba9",
+     "storage": "github+drive",
+     "drive_file_id": "1SzPQKZlEg0vYkaHKKy2wKTdm4gFZGBNW",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "brt_line": {
+   "title": "קווי BRT",
+   "group": "g_brt",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/brt_line",
+    "endpoint": "https://data.gov.il/dataset/66ba64f9-f47c-4c0a-917f-e3cdaf1cf6b1/resource/8d4d11cc-0406-4cb4-8344-d2752b89e003/download/brt_line.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=brt_line"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "מוצק כהה=בביצוע",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "NAME",
+    "fields": [
+     [
+      "NAME",
+      "שם"
+     ],
+     [
+      "LINE",
+      "קו"
+     ],
+     [
+      "STATUS",
+      "סטטוס"
+     ],
+     [
+      "ORIGIN",
+      "מוצא"
+     ],
+     [
+      "DESTNATION",
+      "יעד"
+     ],
+     [
+      "date",
+      "עדכון"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-03-19",
+     "file": "data/layers/brt_line/brt_line_2026-10.geojson",
+     "bytes": 132615,
+     "features": 19,
+     "sha256": "0f22ef1b6e469217",
+     "storage": "github+drive",
+     "drive_file_id": "1vb4iwwUy2LkahsbjdPizeWIr2JdETY7a",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "rail_strategic": {
+   "title": "מסילות – תכנית אסטרטגית",
+   "group": "g_rail",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/rail_strategic",
+    "endpoint": "https://data.gov.il/dataset/d828a2a1-43ea-435c-a0e5-9e3a357b4755/resource/65c4cc65-1dde-4535-9cd0-28b164dc90fe/download/rail_strategic.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=rail_strategic"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "SEGMENT",
+    "fields": [
+     [
+      "SEGMENT",
+      "מקטע"
+     ],
+     [
+      "UPGRADE",
+      "שדרוג"
+     ],
+     [
+      "UPGRAD",
+      "טווח שדרוג"
+     ],
+     [
+      "ISACTIVE",
+      "פעילות"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2021-03-07",
+     "file": "data/layers/rail_strategic/rail_strategic_2026-10.geojson",
+     "bytes": 963883,
+     "features": 217,
+     "sha256": "dea90d8b34f0ba89",
+     "storage": "drive",
+     "drive_file_id": "1XkTlupxCrH5ap_CLM0nxvirEm2kkCBso",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "rail_stat": {
+   "title": "תחנות רכבת נוסעים",
+   "group": "g_rail",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/rail_stat",
+    "endpoint": "https://data.gov.il/dataset/a59be263-f392-46b2-b7e7-8ca0afea5dd6/resource/280a55f6-7bfa-43f4-ba18-3c945ff09f59/download/rail_stat.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=rail_stat"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "ASSET_NAME",
+    "fields": [
+     [
+      "ASSET_NAME",
+      "תחנה"
+     ],
+     [
+      "STATUS",
+      "סטטוס"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-07-12",
+     "file": "data/layers/rail_stat/rail_stat_2026-10.geojson",
+     "bytes": 22624,
+     "features": 78,
+     "sha256": "4bbfd37c7a1f3c4d",
+     "storage": "github+drive",
+     "drive_file_id": "1oymkuJMuBLyb_29UDDhZsY7tIrWa87Df",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "rail_strat_station": {
+   "title": "תחנות – תכנית אסטרטגית",
+   "group": "g_rail",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/rail_strat_station",
+    "endpoint": "https://data.gov.il/dataset/c746650e-b4ba-479f-b71c-7b6662b16b85/resource/c63c380a-0828-4a74-9091-127da3cf623d/download/rail_strat_station.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=rail_strat_station"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "STAT_NAMEH",
+    "fields": [
+     [
+      "STAT_NAMEH",
+      "תחנה"
+     ],
+     [
+      "STAT_NAME",
+      "Station"
+     ],
+     [
+      "YEAR",
+      "שנה"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2021-03-07",
+     "file": "data/layers/rail_strat_station/rail_strat_station_2026-10.geojson",
+     "bytes": 18604,
+     "features": 60,
+     "sha256": "a4147e6504be2273",
+     "storage": "github+drive",
+     "drive_file_id": "1S5KwElPNX-KT_9-pK2pHEil6hAKUd6vt",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "mataan_jlm_2040": {
+   "title": "מתע״ן ירושלים 2040",
+   "group": "g_jlm",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/mataan_jlm_2040",
+    "endpoint": "https://data.gov.il/dataset/068ff53c-ad54-4848-8a29-bd9b178d9174/resource/b26784a0-29a9-4d0c-8540-1c24c8c25aa0/download/mataan_jlm_2040.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=mataan_jlm_2040"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "צבע לפי שדה COLOR",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "LINE_NAME",
+    "fields": [
+     [
+      "LINE_NAME",
+      "קו"
+     ],
+     [
+      "COLOR",
+      "צבע"
+     ],
+     [
+      "ORIGIN",
+      "מוצא"
+     ],
+     [
+      "DESTNATION",
+      "יעד"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-09-02",
+     "file": "data/layers/mataan_jlm_2040/mataan_jlm_2040_2026-10.geojson",
+     "bytes": 309336,
+     "features": 15,
+     "sha256": "1b3a7a55ab37113c",
+     "storage": "github+drive",
+     "drive_file_id": "13FfoAE2hUUF8afhLbBDONr1LJ3suWhuz",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "mataan_jlm_2050": {
+   "title": "מתע״ן ירושלים 2050",
+   "group": "g_jlm",
+   "drive_folder": "mataan",
+   "drive_folder_id": "1mjssONFLKTPhhB-lZHH5219AfigORjQj",
+   "status": "active",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/mataan_jlm_2050",
+    "endpoint": "https://data.gov.il/dataset/5ecf0587-21e6-411a-8f04-9f4f44a43956/resource/dd72c058-7e92-4a1c-be85-207b7a637022/download/mataan_jlm_2050.zip",
+    "ckan_api": "https://data.gov.il/api/3/action/package_show?id=mataan_jlm_2050"
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "צבע לפי שדה LINE_NAME",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "LINE_NAME",
+    "fields": [
+     [
+      "LINE_NAME",
+      "קו"
+     ],
+     [
+      "TYPE",
+      "סוג"
+     ],
+     [
+      "YEAR",
+      "שנה"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": "2026-09-02",
+     "file": "data/layers/mataan_jlm_2050/mataan_jlm_2050_2026-10.geojson",
+     "bytes": 245550,
+     "features": 20,
+     "sha256": "16635db8d5c5c9b2",
+     "storage": "github+drive",
+     "drive_file_id": "1eydeE0vzaa7ihanWlPy5gULox5HFZcP9",
+     "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  },
+  "tma42_roads": {
+   "title": "תמ״א 42 – כבישים (2020)",
+   "group": "g_roads",
+   "drive_folder": "new_roads",
+   "drive_folder_id": null,
+   "status": "candidate",
+   "source": {
+    "publisher": "משרד התחבורה / data.gov.il",
+    "dataset": "https://data.gov.il/dataset/tma42_roads",
+    "endpoint": null,
+    "ckan_api": null
+   },
+   "attribution": "משרד התחבורה / data.gov.il",
+   "note": "מועמדת: לא נכללת בבסיס v3 עד אישור אסף. REMARKS='שמור לתכנון' = מתוכנן",
+   "crs": "EPSG:2039→EPSG:4326",
+   "popup": {
+    "title_field": "NAME",
+    "fields": [
+     [
+      "NAME",
+      "דרך"
+     ],
+     [
+      "MAVAT_NAME",
+      "סיווג"
+     ],
+     [
+      "REMARKS",
+      "הערות"
+     ],
+     [
+      "DATA_DATE",
+      "תאריך נתונים"
+     ]
+    ]
+   },
+   "web": {
+    "fields": [
+     "NAME",
+     "MAVAT_NAME",
+     "REMARKS"
+    ],
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-17",
+     "source_modified": "2020-03-01",
+     "file": "data/layers/tma42_roads/tma42_roads_2026-10.geojson",
+     "bytes": 3325458,
+     "features": 734,
+     "sha256": "4ad295c81adfdd77",
+     "storage": "drive",
+     "drive_file_id": null,
+     "drive_note": null,
+     "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ]
+  }
+ }
+}
