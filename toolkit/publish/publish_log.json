@@ -22,5 +22,29 @@
    "root web copy = showcase v3_hh-p1"
   ],
   "date": "2026-10-21"
+ },
+ {
+  "kind": "base",
+  "args": [
+   "v4",
+   "1s3NCntJyJ59CoSM_4C6w7avuofjXk8nx"
+  ],
+  "date": "2026-10-21"
+ },
+ {
+  "kind": "project",
+  "args": [
+   "har-hotzvim",
+   "1hE3eIjH-grg02XojQMKqijZ7FZmJRhAm"
+  ],
+  "date": "2026-10-21"
+ },
+ {
+  "kind": "github",
+  "args": [
+   "7db3dfc4bbf2e181ae7eef4e456d683ec45f4955",
+   "root web copy = showcase v4_hh-p2"
+  ],
+  "date": "2026-10-21"
  }
 ]

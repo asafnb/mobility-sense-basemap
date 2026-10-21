@@ -1,14 +1,14 @@
 {
  "_doc": "הקובץ בקישור הלחיצה האחת: בסיס + הפרויקטים הפעילים. שם הקובץ בגיטהאב קבוע.",
- "base_version": "v3",
+ "base_version": "v4",
  "projects": [
   "har-hotzvim"
  ],
- "tag": "v3_hh-p1",
+ "tag": "v4_hh-p2",
  "name": "Mobility Sense – מפת בסיס ישראל",
  "github_path": "mobility-sense-base.geolibre.json",
  "last_published": {
-  "commit": "27346f361cf632c6403b137097c4a1a0d3b06931",
+  "commit": "7db3dfc4bbf2e181ae7eef4e456d683ec45f4955",
   "date": "2026-10-21"
  }
 }
