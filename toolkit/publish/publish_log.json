@@ -1,0 +1,26 @@
+[
+ {
+  "kind": "base",
+  "args": [
+   "v3",
+   "1fVLBm5nwftkcZZrLblb8bXq7vBK8Z2Tn"
+  ],
+  "date": "2026-10-21"
+ },
+ {
+  "kind": "project",
+  "args": [
+   "har-hotzvim",
+   "1gAfKowcV-KtiD_hlcbvCs8tnfpHeo_qt"
+  ],
+  "date": "2026-10-21"
+ },
+ {
+  "kind": "github",
+  "args": [
+   "27346f361cf632c6403b137097c4a1a0d3b06931",
+   "root web copy = showcase v3_hh-p1"
+  ],
+  "date": "2026-10-21"
+ }
+]
