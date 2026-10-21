@@ -1,0 +1,248 @@
+{
+ "slug": "har-hotzvim",
+ "title": "הר החוצבים – ירושלים",
+ "project_version": 1,
+ "base_version": "v3",
+ "created": "2026-10-21",
+ "map_view": {
+  "center": [
+   35.208,
+   31.802
+  ],
+  "zoom": 14
+ },
+ "bbox": [
+  35.185,
+  31.785,
+  35.235,
+  31.82
+ ],
+ "bookmarks": [
+  {
+   "id": "har-hotzvim",
+   "name": "הר החוצבים – כביש 22",
+   "lng": 35.205,
+   "lat": 31.8,
+   "zoom": 13.6
+  }
+ ],
+ "groups": [
+  {
+   "id": "g_hh",
+   "name": "הר החוצבים – ירושלים",
+   "parent": "g_proj"
+  }
+ ],
+ "layers": [
+  {
+   "id": "hh_projects",
+   "title": "פרויקטים מתוכננים – הר החוצבים",
+   "group": "g_hh",
+   "version": "2026-10",
+   "file": "layers/hh_projects_2026-10.geojson",
+   "style": {
+    "kind": "point",
+    "color": "#f59e0b",
+    "radius": 7,
+    "extra": {
+     "strokeColor": "#78350f",
+     "strokeWidth": 1.5
+    },
+    "label": {
+     "field": "name_he",
+     "placement": "point",
+     "minZoom": 13,
+     "anchor": "top",
+     "offsetY": 1,
+     "color": "#92400e"
+    }
+   },
+   "popup": {
+    "title_field": "name_he",
+    "fields": [
+     [
+      "name_he",
+      "שם"
+     ],
+     [
+      "name_en",
+      "Name"
+     ],
+     [
+      "status",
+      "סטטוס"
+     ],
+     [
+      "year",
+      "שנה"
+     ],
+     [
+      "address",
+      "כתובת"
+     ],
+     [
+      "notes",
+      "הערות"
+     ],
+     [
+      "confidence",
+      "רמת ודאות"
+     ],
+     [
+      "url",
+      "קישור"
+     ]
+    ]
+   },
+   "attribution": "מחקר Mobility Sense (Sherlock)",
+   "lineage": "מחקר Sherlock + סריקה, 10/2026",
+   "source": "/workspace/har-hotzvim-map/public/data/projects.geojson"
+  },
+  {
+   "id": "hh_companies",
+   "title": "חברות – הר החוצבים",
+   "group": "g_hh",
+   "version": "2026-10",
+   "file": "layers/hh_companies_2026-10.geojson",
+   "style": {
+    "kind": "point",
+    "color": "#0d9488",
+    "radius": 6,
+    "extra": {
+     "strokeColor": "#ffffff",
+     "strokeWidth": 1.5
+    },
+    "label": {
+     "field": "name_he",
+     "placement": "point",
+     "minZoom": 14,
+     "anchor": "top",
+     "offsetY": 1,
+     "color": "#115e59"
+    }
+   },
+   "popup": {
+    "title_field": "name_he",
+    "fields": [
+     [
+      "name_he",
+      "שם"
+     ],
+     [
+      "name_en",
+      "Name"
+     ],
+     [
+      "status",
+      "סטטוס"
+     ],
+     [
+      "year",
+      "שנה"
+     ],
+     [
+      "address",
+      "כתובת"
+     ],
+     [
+      "notes",
+      "הערות"
+     ],
+     [
+      "confidence",
+      "רמת ודאות"
+     ],
+     [
+      "url",
+      "קישור"
+     ]
+    ]
+   },
+   "attribution": "מחקר Mobility Sense (Sherlock)",
+   "lineage": "מחקר Sherlock, 10/2026",
+   "source": "/workspace/har-hotzvim-map/public/data/companies.geojson"
+  },
+  {
+   "id": "road22_jlm",
+   "title": "כביש 22 (ירושלים) – בביצוע",
+   "desc_title": "כביש 22 (ירושלים)",
+   "group": "g_hh",
+   "version": "2026-10",
+   "file": "layers/road22_jlm_2026-10.geojson",
+   "style": {
+    "kind": "line",
+    "color": "#a78bfa",
+    "width": 4,
+    "planned": true,
+    "extra": {
+     "lineDecorationColor": "#7c3aed"
+    },
+    "label": {
+     "field": "name",
+     "placement": "line",
+     "minZoom": 14,
+     "color": "#6d28d9"
+    }
+   },
+   "popup": {
+    "title_field": "part",
+    "fields": [
+     [
+      "name",
+      "שם"
+     ],
+     [
+      "part",
+      "מקטע"
+     ],
+     [
+      "status",
+      "סטטוס"
+     ],
+     [
+      "expected_opening",
+      "פתיחה צפויה"
+     ],
+     [
+      "method",
+      "שיטה"
+     ],
+     [
+      "source",
+      "מקור"
+     ],
+     [
+      "note",
+      "הערה"
+     ]
+    ]
+   },
+   "attribution": "© OpenStreetMap contributors (ODbL)",
+   "lineage": "Overpass 2026-10-14; ways highway=construction name=כביש 22 (ירושלים); זרוע 4 חלקית",
+   "drive_file_id": "1J8_LLwbbdmuGNHXbNtbv0W0mjv017QaO"
+  }
+ ],
+ "style_overrides": {},
+ "hide_base_layers": [],
+ "drive": {
+  "folder_id": "1_4LCB4rIXmfB_YxjHHzFv06PHFfcyG2q",
+  "folder_name": "כביש 22 – הר החוצבים",
+  "parent_folder_id": "1kQNcrF_oRPg-XthWZCxcrWLp6kh57zOM",
+  "geolibre_folder_id": "1FXJJjrB6ppsCjv1HFHneKLkIGdqTmEQp"
+ },
+ "history": [
+  {
+   "note": "לפני מבנה הגרסאות התוכן היה חלק מ־mobility-sense-base v2",
+   "drive_file_id": "17AAA1CC4PfBhyv6VGwsREZM_8rCKWeQ_"
+  }
+ ],
+ "builds": [
+  {
+   "project_version": 1,
+   "base_version": "v3",
+   "drive_file_id": "1gAfKowcV-KtiD_hlcbvCs8tnfpHeo_qt",
+   "date": "2026-10-21"
+  }
+ ],
+ "_doc": "style_overrides: {layer_id: {color/width/visible/...}} גובר על style.json רק בפרויקט הזה. hide_base_layers: שכבות בסיס שיוצגו כבויות."
+}

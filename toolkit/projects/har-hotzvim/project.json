@@ -1,8 +1,8 @@
 {
  "slug": "har-hotzvim",
  "title": "הר החוצבים – ירושלים",
- "project_version": 1,
- "base_version": "v3",
+ "project_version": 2,
+ "base_version": "v4",
  "created": "2026-10-21",
  "map_view": {
   "center": [
@@ -42,7 +42,7 @@
    "file": "layers/hh_projects_2026-10.geojson",
    "style": {
     "kind": "point",
-    "color": "#f59e0b",
+    "color": "@PROJ_POI",
     "radius": 7,
     "extra": {
      "strokeColor": "#78350f",
@@ -54,7 +54,7 @@
      "minZoom": 13,
      "anchor": "top",
      "offsetY": 1,
-     "color": "#92400e"
+     "color": "@PROJ_POI_INK"
     }
    },
    "popup": {
@@ -106,7 +106,7 @@
    "file": "layers/hh_companies_2026-10.geojson",
    "style": {
     "kind": "point",
-    "color": "#0d9488",
+    "color": "@PROJ_CO",
     "radius": 6,
     "extra": {
      "strokeColor": "#ffffff",
@@ -118,7 +118,7 @@
      "minZoom": 14,
      "anchor": "top",
      "offsetY": 1,
-     "color": "#115e59"
+     "color": "@PROJ_CO_INK"
     }
    },
    "popup": {
@@ -171,17 +171,51 @@
    "file": "layers/road22_jlm_2026-10.geojson",
    "style": {
     "kind": "line",
-    "color": "#a78bfa",
-    "width": 4,
-    "planned": true,
-    "extra": {
-     "lineDecorationColor": "#7c3aed"
-    },
+    "color": "@PROJ_ROAD",
+    "width": 5,
     "label": {
      "field": "name",
      "placement": "line",
      "minZoom": 14,
-     "color": "#6d28d9"
+     "color": "@PROJ_ROAD_INK",
+     "size": 12,
+     "haloColor": "#ffffff",
+     "haloWidth": 2,
+     "maxWidth": 8,
+     "sizeExpression": "[\"interpolate\",[\"linear\"],[\"zoom\"],14,11,16,14]"
+    },
+    "extra": {
+     "vectorStyleMode": "rule-based",
+     "vectorRules": [
+      {
+       "id": "r0",
+       "label": "בביצוע",
+       "isElse": false,
+       "filter": "[\"all\"]",
+       "color": "#6D28D9",
+       "strokeWidth": 3,
+       "maxZoom": 13
+      },
+      {
+       "id": "r1",
+       "label": "בביצוע",
+       "isElse": false,
+       "filter": "[\"all\"]",
+       "color": "#6D28D9",
+       "strokeWidth": 5,
+       "minZoom": 13,
+       "maxZoom": 15
+      },
+      {
+       "id": "r2",
+       "label": "בביצוע",
+       "isElse": false,
+       "filter": "[\"all\"]",
+       "color": "#6D28D9",
+       "strokeWidth": 7,
+       "minZoom": 15
+      }
+     ]
     }
    },
    "popup": {
@@ -220,6 +254,50 @@
    "attribution": "© OpenStreetMap contributors (ODbL)",
    "lineage": "Overpass 2026-10-14; ways highway=construction name=כביש 22 (ירושלים); זרוע 4 חלקית",
    "drive_file_id": "1J8_LLwbbdmuGNHXbNtbv0W0mjv017QaO"
+  },
+  {
+   "id": "road22_jlm__core",
+   "title": "כביש 22 (ירושלים) – בביצוע (ליבה)",
+   "legend": false,
+   "style": {
+    "kind": "line",
+    "color": "@WHITE",
+    "width": 2,
+    "extra": {
+     "vectorStyleMode": "rule-based",
+     "vectorRules": [
+      {
+       "id": "r0",
+       "label": "ליבה",
+       "isElse": false,
+       "filter": "[\"all\"]",
+       "color": "#FFFFFF",
+       "strokeWidth": 1.2,
+       "maxZoom": 13
+      },
+      {
+       "id": "r1",
+       "label": "ליבה",
+       "isElse": false,
+       "filter": "[\"all\"]",
+       "color": "#FFFFFF",
+       "strokeWidth": 2.2,
+       "minZoom": 13,
+       "maxZoom": 15
+      },
+      {
+       "id": "r2",
+       "label": "ליבה",
+       "isElse": false,
+       "filter": "[\"all\"]",
+       "color": "#FFFFFF",
+       "strokeWidth": 3.2,
+       "minZoom": 15
+      }
+     ]
+    }
+   },
+   "derived_from": "road22_jlm"
   }
  ],
  "style_overrides": {},
@@ -234,6 +312,12 @@
   {
    "note": "לפני מבנה הגרסאות התוכן היה חלק מ־mobility-sense-base v2",
    "drive_file_id": "17AAA1CC4PfBhyv6VGwsREZM_8rCKWeQ_"
+  },
+  {
+   "project_version": 1,
+   "base_version": "v3",
+   "archived": "2026-10-21",
+   "note": "שדרוג ל־v4 (עיצוב s2.0, סקירת Carto): כביש 22 כקו חלול (בביצוע), צבעים מטוקני PROJ_*, מקרא מותאם"
   }
  ],
  "builds": [
@@ -242,7 +326,57 @@
    "base_version": "v3",
    "drive_file_id": "1gAfKowcV-KtiD_hlcbvCs8tnfpHeo_qt",
    "date": "2026-10-21"
+  },
+  {
+   "project_version": 2,
+   "base_version": "v4",
+   "drive_file_id": "1hE3eIjH-grg02XojQMKqijZ7FZmJRhAm",
+   "date": "2026-10-21"
   }
  ],
- "_doc": "style_overrides: {layer_id: {color/width/visible/...}} גובר על style.json רק בפרויקט הזה. hide_base_layers: שכבות בסיס שיוצגו כבויות."
+ "_doc": "style_overrides: {layer_id: {color/width/visible/...}} גובר על style.json רק בפרויקט הזה. hide_base_layers: שכבות בסיס שיוצגו כבויות. layers[].derived_from = שכבה נגזרת מאותו קובץ (למשל ליבה לבנה לקו חלול). style_overrides על שכבות בסיס: רק visible/width/label/extra.minZoom/maxZoom (ראו style.json override_policy).",
+ "upgraded": "2026-10-21",
+ "legend": {
+  "_doc": "legend.customEntries/overrides של הפרויקט; מוצגים מעל שכבות הבסיס במקרא",
+  "order": [
+   "road22_jlm",
+   "hh_projects",
+   "hh_companies"
+  ],
+  "customEntries": {
+   "road22_jlm": {
+    "title": "כביש 22 (ירושלים) – בביצוע (קו חלול)",
+    "items": [
+     {
+      "label": "פתיחה צפויה: סוף 2027",
+      "color": "#6D28D9",
+      "shape": "line",
+      "size": 5
+     }
+    ]
+   },
+   "hh_projects": {
+    "title": "פרויקטים מתוכננים – הר החוצבים",
+    "items": [
+     {
+      "label": "פרויקט",
+      "color": "#F59E0B",
+      "shape": "circle",
+      "size": 7
+     }
+    ]
+   },
+   "hh_companies": {
+    "title": "חברות – הר החוצבים",
+    "items": [
+     {
+      "label": "חברה",
+      "color": "#0D9488",
+      "shape": "circle",
+      "size": 6
+     }
+    ]
+   }
+  }
+ }
 }
