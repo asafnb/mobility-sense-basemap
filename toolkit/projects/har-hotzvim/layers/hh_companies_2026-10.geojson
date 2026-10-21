@@ -1,0 +1,313 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2091651,
+          31.8035358
+        ]
+      },
+      "properties": {
+        "name": "Intel",
+        "name_he": "אינטל ירושלים",
+        "name_en": "Intel",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Microprocessors / semiconductor R&D and manufacturing campus. Building listed as IDPj on park site. [nominatim_house_geocode]",
+        "url": "https://hotzvim.org.il/company/%d7%90%d7%99%d7%a0%d7%98%d7%9c/",
+        "address": "HaMarpe 9, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2078569,
+          31.801208
+        ]
+      },
+      "properties": {
+        "name": "Mobileye",
+        "name_he": "מובילאיי",
+        "name_en": "Mobileye",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "HQ / major ADAS campus. Coordinates from OSM named POI מובילאיי (not street centroid). [osm_named_poi]",
+        "url": "https://www.mobileye.com/contact/",
+        "address": "Shlomo Momo Halevi 1, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2088653,
+          31.8009324
+        ]
+      },
+      "properties": {
+        "name": "Rafael Advanced Defense Systems — Jerusalem Development Center",
+        "name_he": "רפאל — מרכז הפיתוח ירושלים",
+        "name_en": "Rafael Advanced Defense Systems — Jerusalem Development Center",
+        "year": 2025,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Campus inaugurated ~2025 (JPost Sep 2026). Coordinates approximate: Nominatim returned street only (no house number). [approximate_street_geocode]",
+        "url": "https://www.hotzvim.org.il/company/%D7%A8%D7%A4%D7%90%D7%9C-%D7%9E%D7%A2%D7%A8%D7%9B%D7%95%D7%AA-%D7%9C%D7%97%D7%99%D7%9E%D7%94-%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%95%D7%AA-%D7%91%D7%A2%D7%9E/",
+        "address": "Shlomo Halevi 2, Har Hotzvim, Jerusalem",
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2136053,
+          31.8020342
+        ]
+      },
+      "properties": {
+        "name": "Ophir Optronics Solutions",
+        "name_he": "אופיר אופטרוניקה",
+        "name_en": "Ophir Optronics Solutions",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "MKS Instruments group; optics / laser measurement. Road 22 northern entrance planned near this area. [nominatim_house_geocode]",
+        "url": "https://hotzvim.org.il/company/%d7%90%d7%95%d7%a4%d7%99%d7%a8-%d7%90%d7%95%d7%a4%d7%98%d7%a8%d7%95%d7%a0%d7%99%d7%a7%d7%94-%d7%a9%d7%9c%d7%95%d7%97%d7%94/",
+        "address": "Hartom 6, Beit Ophir, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2130876,
+          31.8028209
+        ]
+      },
+      "properties": {
+        "name": "Elbit Systems Rokar",
+        "name_he": "אלביט מערכות רוקר",
+        "name_en": "Elbit Systems Rokar",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Avionics / defense electronics. [nominatim_house_geocode]",
+        "url": "https://hotzvim.org.il/company/%D7%90%D7%9C%D7%91%D7%99%D7%98-%D7%9E%D7%A2%D7%A8%D7%9B%D7%95%D7%AA-%D7%A8%D7%95%D7%A7%D7%A8/",
+        "address": "Hartom 11, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2133925,
+          31.80289
+        ]
+      },
+      "properties": {
+        "name": "Medinol",
+        "name_he": "מדינול",
+        "name_en": "Medinol",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Cardiovascular medical devices — manufacturing facility. [nominatim_house_geocode]",
+        "url": "https://medinol.com/contact-us/",
+        "address": "Beck Tech Building, Hartom 8, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2111443,
+          31.8023686
+        ]
+      },
+      "properties": {
+        "name": "Medtronic",
+        "name_he": "מדטרוניק",
+        "name_en": "Medtronic",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Medical technology; shares HaMarpe 7 building area with Kramer per park directory. [nominatim_house_geocode]",
+        "url": "https://hotzvim.org.il/en/high-tech-park/park-companies/",
+        "address": "HaMarpe 7, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2111443,
+          31.8023686
+        ]
+      },
+      "properties": {
+        "name": "Kramer Electronics",
+        "name_he": "קרמר אלקטרוניקס",
+        "name_en": "Kramer Electronics",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "AV / cloud / hardware solutions. Same HaMarpe 7 geocode as Medtronic. [nominatim_house_geocode]",
+        "url": "https://hotzvim.org.il/en/high-tech-park/park-companies/",
+        "address": "HaMarpe 7, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2103559,
+          31.8015023
+        ]
+      },
+      "properties": {
+        "name": "Alpha Tau Medical",
+        "name_he": "אלפא תאו מדיקל",
+        "name_en": "Alpha Tau Medical",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Alpha DaRT oncology therapy R&D. [nominatim_house_geocode]",
+        "url": "https://hotzvim.org.il/company/%d7%90%d7%9c%d7%a4%d7%90-%d7%aa%d7%90%d7%95/",
+        "address": "Kiryat HaMada 5 (קרית מדע 5), Shaked Building, Har Hotzvim",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2079183,
+          31.8029758
+        ]
+      },
+      "properties": {
+        "name": "Merck (Sigma-Aldrich)",
+        "name_he": "מרק (סיגמא־אלדריץ')",
+        "name_en": "Merck (Sigma-Aldrich)",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Fine chemicals development and production. [nominatim_house_geocode]",
+        "url": "https://hotzvim.org.il/en/high-tech-park/park-companies/",
+        "address": "Science Park / Kiryat HaMada 13, Har Hotzvim",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2072023,
+          31.8020782
+        ]
+      },
+      "properties": {
+        "name": "Rafa Laboratories (offices)",
+        "name_he": "מעבדות רפא (משרדים)",
+        "name_en": "Rafa Laboratories (offices)",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Management and offices. Tower expansion planned on Rafa plot (see project feature). [nominatim_house_geocode]",
+        "url": "https://www.rafa.co.il/en/contact-rafa",
+        "address": "Shlomo Halevi 5, Jerusalem of Silver building, Har Hotzvim",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2121453,
+          31.8034379
+        ]
+      },
+      "properties": {
+        "name": "Rafa Laboratories (factory)",
+        "name_he": "מעבדות רפא (מפעל)",
+        "name_en": "Rafa Laboratories (factory)",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Factory address per Rafa contact page. Coordinates approximate: Nominatim street only. [approximate_street_geocode]",
+        "url": "https://www.rafa.co.il/en/contact-rafa",
+        "address": "Zeev Lev 3, Har Hotzvim, Jerusalem",
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2118063,
+          31.8020328
+        ]
+      },
+      "properties": {
+        "name": "Vitania Har Hotzvim (former Teva inhaler plant)",
+        "name_he": "ויתניה הר חוצבים",
+        "name_en": "Vitania Har Hotzvim (former Teva inhaler plant)",
+        "year": 2020,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Vitania acquired Teva inhaler plant 2020; existing building leased to tenants; expansion rights planned. Mapped as company/site operator; see also redevelopment project. [nominatim_house_geocode]",
+        "url": "https://vitania.co.il/en/vitania-har-hotzvim-jerusalem/",
+        "address": "HaMarpe 2, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2120169,
+          31.8004919
+        ]
+      },
+      "properties": {
+        "name": "Har Hotzvim Mall",
+        "name_he": "קניון הר חוצבים",
+        "name_en": "Har Hotzvim Mall",
+        "year": null,
+        "status": "existing",
+        "source": "research merge Sherlock + executor 2026-10-06",
+        "notes": "Retail / services hub; floor additions listed in park expected-construction plans. [osm_named_poi]",
+        "url": "https://hotzvim.org.il/en/high-tech-park/park-companies/",
+        "address": "HaMarpe 1 area, Har Hotzvim, Jerusalem",
+        "confidence": "high"
+      }
+    }
+  ]
+}
