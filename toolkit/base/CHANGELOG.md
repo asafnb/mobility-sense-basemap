@@ -1,5 +1,19 @@
 # CHANGELOG – מפת הבסיס
 
+## v5 – 2026-10-23
+- עיצוב: s2.0 → s3.0
+- שכבה הוסרה: `bicycle_jer_2019`
+- שכבה הוסרה: `metro_line_jlm`
+- שכבה הוסרה: `mataan_jlm_2040`
+- שכבה הוסרה: `mataan_jlm_2050`
+- הערה: בסיס ארצי בלבד: שכבות ירושלים עברו לחבילה האזורית jerusalem j1 (regions/jerusalem). עיצוב s3.0: צבע אחד לכל משפחת תשתית, הסטטוס בסגנון הקו.
+- קרדיט: אסף (23.10.2026): להוציא את ירושלים מהכללי לענף ירושלים; קיים ומתוכנן באותו צבע, הקיים מודגש
+- שכבות ירושלים (`bicycle_jer_2019`, `metro_line_jlm`, `mataan_jlm_2040`, `mataan_jlm_2050`) עברו לחבילה האזורית `regions/jerusalem` j1, יחד עם `road22_jlm` ו־`hh_companies` מפרויקט הר החוצבים. גרסאות הנתונים לא השתנו (2026-10).
+- שכבות נגזרות חדשות: `nataz_planned__constr(_core)`, `bph_infra_plan__constr(_core)`, `bicycle_jer_2019__plan` (בחבילה), `road22_jlm__core` (בחבילה).
+- פרטים: `style/releases/s3.0/RELEASE.md`. לפני/אחרי (רינדור GeoLibre Web): `style/releases/s3.0/tel-aviv_compare.png`, `gush-dan_compare.png`, `national_compare.png`, `jerusalem_compare.png`, `har-hotzvim_compare.png`.
+- קישור הלחיצה האחת = v5 בלבד (בלי ירושלים ובלי פרויקטים). הר החוצבים: `projects/har-hotzvim.web.geolibre.json`.
+- פרויקט `har-hotzvim` שודרג ל־p3 על v5 + jerusalem j1.
+
 ## v4 – 2026-10-21
 - עיצוב: s1 → s2.0
 - הערה: עיצוב s2.0 לפי סקירת העיצוב של Carto: קיים=רציף, בביצוע=קו חלול, מתוכנן=מקווקו (ריבועים לבנים); פסי זום ורוחבים; תיקוני באגים (קו אדום קיים בירושלים, LRT ומסילות לפי סטטוס, בלי בוטל/מוקפא, מקרא)
