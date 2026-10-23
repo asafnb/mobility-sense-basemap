@@ -1,8 +1,8 @@
 {
- "registry_version": 1,
- "updated": "2026-10-21",
+ "registry_version": 2,
+ "updated": "2026-10-23",
  "github_size_limit_bytes": 512000,
- "_doc": "כל שכבה: מטא־דאטה + רשימת גרסאות. קבצים מתוארכים ב־data/layers/<id>/<id>_<YYYY-MM>.geojson; אף פעם לא דורסים גרסה. storage=github → נכנס לריפו (קטן); drive → רק בדרייב.",
+ "_doc": "כל שכבה: מטא־דאטה + רשימת גרסאות. קבצים מתוארכים ב־data/layers/<id>/<id>_<YYYY-MM>.geojson; אף פעם לא דורסים גרסה. storage=github → נכנס לריפו (קטן); drive → רק בדרייב. | scope: national = שכבת בסיס ארצית; region:<id> = שכבה של חבילה אזורית (regions/<id>/), לא נכנסת לבסיס.",
  "layers": {
   "nataz_kayam": {
    "title": "נת״צ קיימים",
@@ -83,7 +83,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "nataz_planned": {
    "title": "נת״צ מתוכננים",
@@ -174,7 +175,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "bph_infra_exist": {
    "title": "תשתית רכיבה קיימת",
@@ -248,7 +250,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "bph_infra_plan": {
    "title": "תשתית רכיבה מתוכננת",
@@ -322,7 +325,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "ofneidan": {
    "title": "אופנידן",
@@ -383,7 +387,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "bicycle_jer_2019": {
    "title": "שבילי אופניים – ירושלים (2019)",
@@ -436,7 +441,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "region:jerusalem"
   },
   "lrt_line": {
    "title": "קווי רכבת קלה",
@@ -509,7 +515,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "lrt_stat": {
    "title": "תחנות רכבת קלה",
@@ -574,7 +581,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "metro_line": {
    "title": "קווי מטרו (גוש דן)",
@@ -623,7 +631,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "metro_stat": {
    "title": "תחנות מטרו",
@@ -680,7 +689,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "metro_line_jlm": {
    "title": "מטרו – מטרופולין ירושלים",
@@ -729,7 +739,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "region:jerusalem"
   },
   "brt_line": {
    "title": "קווי BRT",
@@ -794,7 +805,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "rail_strategic": {
    "title": "מסילות – תכנית אסטרטגית",
@@ -851,7 +863,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "rail_stat": {
    "title": "תחנות רכבת נוסעים",
@@ -900,7 +913,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "rail_strat_station": {
    "title": "תחנות – תכנית אסטרטגית",
@@ -953,7 +967,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "national"
   },
   "mataan_jlm_2040": {
    "title": "מתע״ן ירושלים 2040",
@@ -1010,7 +1025,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "region:jerusalem"
   },
   "mataan_jlm_2050": {
    "title": "מתע״ן ירושלים 2050",
@@ -1063,7 +1079,8 @@
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
     }
-   ]
+   ],
+   "scope": "region:jerusalem"
   },
   "tma42_roads": {
    "title": "תמ״א 42 – כבישים (2020)",
@@ -1123,6 +1140,148 @@
      "drive_file_id": null,
      "drive_note": null,
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    }
+   ],
+   "scope": "national"
+  },
+  "road22_jlm": {
+   "title": "כביש 22 (ירושלים)",
+   "group": "g_jlm_roads",
+   "scope": "region:jerusalem",
+   "drive_folder": "road22_har_hotzvim",
+   "drive_folder_id": "1_4LCB4rIXmfB_YxjHHzFv06PHFfcyG2q",
+   "status": "active",
+   "source": {
+    "publisher": "© OpenStreetMap contributors (ODbL)",
+    "dataset": null,
+    "lineage": "Overpass 2026-10-14; ways highway=construction name=כביש 22 (ירושלים); זרוע 4 חלקית"
+   },
+   "attribution": "© OpenStreetMap contributors (ODbL)",
+   "note": "OSM highway=construction; זרוע 4 חלקית",
+   "crs": "EPSG:4326",
+   "popup": {
+    "title_field": "part",
+    "fields": [
+     [
+      "name",
+      "שם"
+     ],
+     [
+      "part",
+      "מקטע"
+     ],
+     [
+      "status",
+      "סטטוס"
+     ],
+     [
+      "expected_opening",
+      "פתיחה צפויה"
+     ],
+     [
+      "method",
+      "שיטה"
+     ],
+     [
+      "source",
+      "מקור"
+     ],
+     [
+      "note",
+      "הערה"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-14",
+     "source_modified": null,
+     "file": "data/layers/road22_jlm/road22_jlm_2026-10.geojson",
+     "bytes": 4605,
+     "features": 3,
+     "sha256": "5adda035b8d1cdf4",
+     "storage": "github+drive",
+     "drive_file_id": "1J8_LLwbbdmuGNHXbNtbv0W0mjv017QaO",
+     "changes": "הועבר מפרויקט har-hotzvim (p2) לחבילה האזורית jerusalem j1 – תוכן זהה",
+     "drive_note": "קובץ הדרייב road22_jerusalem.geojson בתיקיית כביש 22 – הר החוצבים (תוכן זהה, 4605 בתים)"
+    }
+   ]
+  },
+  "hh_companies": {
+   "title": "חברות – הר החוצבים",
+   "group": "g_jlm_poi",
+   "scope": "region:jerusalem",
+   "drive_folder": "road22_har_hotzvim",
+   "drive_folder_id": "1_4LCB4rIXmfB_YxjHHzFv06PHFfcyG2q",
+   "status": "active",
+   "source": {
+    "publisher": "מחקר Mobility Sense (Sherlock)",
+    "dataset": null,
+    "lineage": "מחקר Sherlock, 10/2026"
+   },
+   "attribution": "מחקר Mobility Sense (Sherlock)",
+   "note": "מחקר Mobility Sense; נקודות חברות/משרדים בהר החוצבים",
+   "crs": "EPSG:4326",
+   "popup": {
+    "title_field": "name_he",
+    "fields": [
+     [
+      "name_he",
+      "שם"
+     ],
+     [
+      "name_en",
+      "Name"
+     ],
+     [
+      "status",
+      "סטטוס"
+     ],
+     [
+      "year",
+      "שנה"
+     ],
+     [
+      "address",
+      "כתובת"
+     ],
+     [
+      "notes",
+      "הערות"
+     ],
+     [
+      "confidence",
+      "רמת ודאות"
+     ],
+     [
+      "url",
+      "קישור"
+     ]
+    ]
+   },
+   "web": {
+    "fields": null,
+    "merge": false
+   },
+   "current": "2026-10",
+   "versions": [
+    {
+     "version": "2026-10",
+     "data_date": "2026-10-21",
+     "source_modified": null,
+     "file": "data/layers/hh_companies/hh_companies_2026-10.geojson",
+     "bytes": 10846,
+     "features": 14,
+     "sha256": "86e1fba190daeb09",
+     "storage": "github+drive",
+     "drive_file_id": "1olIg3YY1v6eBdihaUEURBZ7vPTZhJWvE",
+     "changes": "הועבר מפרויקט har-hotzvim (p2) לחבילה האזורית jerusalem j1 – תוכן זהה"
     }
    ]
   }

@@ -6,6 +6,7 @@ import os,sys,json,argparse,subprocess,tempfile,copy; sys.path.insert(0,os.path.
 VIEWS={  # same three views as Carto's review (+ the Har Hotzvim project view)
  "national":dict(center=[34.95,31.75],zoom=7.6),
  "tel-aviv":dict(center=[34.80,32.07],zoom=12.3),
+ "gush-dan":dict(center=[34.82,32.06],zoom=11.2),   # metropolitan band (10–13), s3.0 check: existing vs planned
  "jerusalem":dict(center=[35.20,31.79],zoom=13.6),
  "har-hotzvim":dict(center=[35.214,31.806],zoom=14.8),
 }
