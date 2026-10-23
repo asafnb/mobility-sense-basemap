@@ -46,5 +46,47 @@
    "root web copy = showcase v4_hh-p2"
   ],
   "date": "2026-10-21"
+ },
+ {
+  "kind": "base",
+  "args": [
+   "v5",
+   "1kZfAaTVyzZfVZX-znB4FyxJo4746S3I8"
+  ],
+  "date": "2026-10-23"
+ },
+ {
+  "kind": "project",
+  "args": [
+   "har-hotzvim",
+   "1c6NmyWRdnezlhb_yUM22KcXuUmCPognK"
+  ],
+  "date": "2026-10-23"
+ },
+ {
+  "kind": "region",
+  "args": [
+   "jerusalem",
+   "j1",
+   "1pYiFUNc8kgHmaszM4uB-Q2BT1pedCP9F"
+  ],
+  "date": "2026-10-23"
+ },
+ {
+  "kind": "layer",
+  "args": [
+   "hh_companies",
+   "2026-10",
+   "1olIg3YY1v6eBdihaUEURBZ7vPTZhJWvE"
+  ],
+  "date": "2026-10-23"
+ },
+ {
+  "kind": "github",
+  "args": [
+   "6abc67f183cdaa4ce638ac408c93d5f8dfb47a48",
+   "root=v5 s3.0; projects/har-hotzvim.web = p3 v5+jerusalem_j1 (2410c09); toolkit 029389e..3cc221a"
+  ],
+  "date": "2026-10-23"
  }
 ]

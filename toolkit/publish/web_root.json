@@ -6,8 +6,10 @@
  "name": "Mobility Sense – מפת בסיס ישראל",
  "github_path": "mobility-sense-base.geolibre.json",
  "last_published": {
-  "commit": "7db3dfc4bbf2e181ae7eef4e456d683ec45f4955",
-  "date": "2026-10-21"
+  "date": "2026-10-23",
+  "commit": "6abc67f183cdaa4ce638ac408c93d5f8dfb47a48",
+  "file": "dist/showcase_v5.web.geolibre.json",
+  "bytes": 3196366
  },
  "regions": []
 }
