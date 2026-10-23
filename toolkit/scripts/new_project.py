@@ -1,15 +1,18 @@
 """Create a new project folder from the latest base.
-Usage: python scripts/new_project.py <slug> "<כותרת>" --center LNG,LAT [--zoom 14] [--bbox W,S,E,N] [--group-name "..."]
+Usage: python scripts/new_project.py <slug> "<כותרת>" --center LNG,LAT [--zoom 14] [--bbox W,S,E,N] [--group-name "..."] [--region jerusalem]
 Creates projects/<slug>/project.json + layers/ and prints the Drive folder plan (folder is created by the agent with the Drive connector)."""
 import os,sys,argparse,glob; sys.path.insert(0,os.path.dirname(__file__)); from lib import *
 ap=argparse.ArgumentParser(); ap.add_argument('slug'); ap.add_argument('title'); ap.add_argument('--center',required=True); ap.add_argument('--zoom',type=float,default=14)
-ap.add_argument('--bbox'); ap.add_argument('--group-name'); ap.add_argument('--base')
+ap.add_argument('--bbox'); ap.add_argument('--group-name'); ap.add_argument('--base'); ap.add_argument('--region',action='append',default=[],help='pin a regional pack, e.g. jerusalem or jerusalem=j1')
 a=ap.parse_args(); d=f"{ROOT}/projects/{a.slug}"
 if os.path.exists(d): sys.exit(f"{d} exists")
 bases=sorted(glob.glob(f"{ROOT}/base/v*/manifest.json"),key=lambda p:int(p.split('/')[-2][1:]))
 bv=a.base or load_json(bases[-1])['base_version']; c=[float(x) for x in a.center.split(',')]
 gid="g_"+a.slug.replace('-','_')
-P=dict(slug=a.slug,title=a.title,project_version=1,base_version=bv,created=today(),
+regs=[]
+for r in a.region:
+    rid,_,ver=r.partition('='); ver=ver or load_json(f"{ROOT}/regions/{rid}/region.json")['current']; region_manifest(rid,ver); regs.append(dict(id=rid,version=ver))
+P=dict(slug=a.slug,title=a.title,project_version=1,base_version=bv,regions=regs,created=today(),
   map_view=dict(center=c,zoom=a.zoom),bbox=[float(x) for x in a.bbox.split(',')] if a.bbox else None,
   bookmarks=[dict(id=a.slug,name=a.title,lng=c[0],lat=c[1],zoom=a.zoom)],
   groups=[dict(id=gid,name=a.group_name or a.title,parent="g_proj")],layers=[],style_overrides={},hide_base_layers=[],

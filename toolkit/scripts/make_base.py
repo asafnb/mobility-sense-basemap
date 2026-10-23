@@ -1,5 +1,6 @@
 """Create a new base version manifest = style version + pinned layer versions.
 Usage: python scripts/make_base.py v4 [--style s2.0] [--credit "..."] [--add LAYER] [--remove LAYER] [--pin LAYER=VERSION] [--note "..."]
+The base is national only: layers with registry scope region:<id> belong to a region pack (make_region.py).
 Defaults: latest released style, the 'current' version of every layer in the previous base (+ --add)."""
 import os,sys,json,argparse,glob; sys.path.insert(0,os.path.dirname(__file__)); from lib import *
 ap=argparse.ArgumentParser(); ap.add_argument('version'); ap.add_argument('--style'); ap.add_argument('--from',dest='prev')
@@ -15,6 +16,8 @@ ids=[i for i in ids if i not in a.remove]+[i for i in a.add if i not in ids]
 pins=dict(p.split('=') for p in a.pin)
 layers=[dict(id=i,version=pins.get(i,reg['layers'][i]['current'])) for i in ids]
 for l in layers: layer_version(reg,l['id'],l['version'])
+regional=[l['id'] for l in layers if reg['layers'][l['id']].get('scope','national')!='national']
+if regional: sys.exit(f"{regional}: registry scope is regional – put them in a region pack (regions/<id>/region.json + make_region.py), not in the national base; or --remove them")
 M=dict(base_version=a.version,created=today(),name=prev['name'] if prev else "Mobility Sense – מפת בסיס ישראל",
   description=prev['description'] if prev else "",previous=prev and prev['base_version'],style_version=sv,layers=layers,
   map_view=prev['map_view'] if prev else dict(center=[34.95,31.45],zoom=7.2),bookmarks=prev['bookmarks'] if prev else [],note=a.note,outputs={})

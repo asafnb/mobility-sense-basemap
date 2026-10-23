@@ -1,6 +1,8 @@
 """Mobility Sense GeoLibre toolkit – shared logic.
 Concepts: style version (style/versions/style_<v>.json) + layer versions (layers/layers.json)
-= base version (base/<base>/manifest.json). Projects pin a base version and add their own layers."""
+= base version (base/<base>/manifest.json, national layers only).
+Regional packs (regions/<id>/<ver>/manifest.json) pin region-only layers (e.g. Jerusalem) on top of any base with a new-enough style.
+Projects pin a base version + optional region packs and add their own layers."""
 import json,os,copy,hashlib,time,datetime,re
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST=f"{ROOT}/dist"
@@ -86,8 +88,8 @@ def base_manifest(bv): return load_json(f"{ROOT}/base/{bv}/manifest.json")
 def project_cfg(slug): return load_json(f"{ROOT}/projects/{slug}/project.json")
 # ---------- override policy (style.json override_policy) ----------
 BASE_OVERRIDE_KEYS={'visible','width','label','extra'}; BASE_OVERRIDE_EXTRA={'minZoom','maxZoom'}
-def check_overrides(slug,ov,S,project_ids):
-    """Projects may change visibility, minZoom/maxZoom, labels and width of base layers – never palette or status encoding.
+def check_overrides(slug,ov,S,project_ids,region_ids=()):
+    """Region-pack layers follow the same rules as base layers. Projects may change visibility, minZoom/maxZoom, labels and width of base layers – never palette or status encoding.
     Unknown layer ids and unknown keys are rejected (a typo used to be added silently)."""
     errs=[]; lab_keys=set(S['label_defaults'])
     for lid,o in ov.items():
@@ -105,67 +107,103 @@ def check_overrides(slug,ov,S,project_ids):
                 bad=set(v)-lab_keys
                 if bad: errs.append(f"{lid}.label.{sorted(bad)}: unknown label keys")
     if errs: raise SystemExit(f"style_overrides of project {slug} rejected:\n  "+"\n  ".join(errs))
-def merge_overrides(P,S):
+def merge_overrides(P,S,region_ids=()):
     ov={}; owner={}
     for p in P:
-        po=p.get('style_overrides',{}); check_overrides(p['slug'],po,S,{l['id'] for l in p['layers']})
+        po=p.get('style_overrides',{}); check_overrides(p['slug'],po,S,{l['id'] for l in p['layers']},region_ids)
         for lid,o in po.items():
             if lid in owner and owner[lid]!=p['slug']:
                 print(f"WARNING override conflict on {lid}: {owner[lid]} vs {p['slug']} – {p['slug']} wins (last on command line)")
             owner[lid]=p['slug']
         ov=deep_merge(ov,po)
     return ov
+# ---------- regions (regional layer packs: regions/<id>/<ver>/manifest.json) ----------
+def region_manifest(rid,ver):
+    p=f"{ROOT}/regions/{rid}/{ver}/manifest.json"
+    if not os.path.exists(p): raise SystemExit(f"region pack {rid} {ver} not found ({p}); run make_region.py")
+    return load_json(p)
+def resolve_regions(P,regions=None):
+    """Region packs to load = explicit list (id or id=ver) + the packs pinned by the projects. Two different versions of one pack = error."""
+    want={}
+    def add(rid,ver,who):
+        if rid in want and want[rid][0]!=ver: raise SystemExit(f"region {rid}: {want[rid][1]} pins {want[rid][0]}, {who} pins {ver}")
+        want.setdefault(rid,(ver,who))
+    for p in P:
+        for r in p.get('regions',[]): add(r['id'],r['version'],p['slug'])
+    for r in regions or []:
+        rid,_,ver=r.partition('=')
+        if not ver:
+            if rid in want: continue
+            ver=load_json(f"{ROOT}/regions/{rid}/region.json")['current']
+        add(rid,ver,'command line')
+    return [region_manifest(rid,v) for rid,(v,_) in want.items()]
 # ---------- compose ----------
-def _layer(lid,name,gid,style,pop,visible,geojson,rel,desc,filt=None):
-    lay=dict(id=lid,name=name,type="geojson",source={"type":"geojson"},visible=visible,opacity=1,style=style,metadata={"localFile":rel},geojson=geojson,groupId=gid,popup=pop,descriptiveMetadata=desc)
+def _layer(lid,name,gid,style,pop,visible,geojson,rel,desc,filt=None,opacity=1):
+    lay=dict(id=lid,name=name,type="geojson",source={"type":"geojson"},visible=visible,opacity=opacity,style=style,metadata={"localFile":rel},geojson=geojson,groupId=gid,popup=pop,descriptiveMetadata=desc)
     if filt: lay['filterExpression']=filt
     return lay
-def compose(bv,projects=(),view=None,name=None):
-    """Build a GeoLibre project dict: base version bv + project slugs (in order)."""
+def _prefiltered(gj,filt):
+    """Derived (helper/status) layers carry only the features their filter shows – the source layer keeps the full data."""
+    if not filt: return gj
+    return dict(gj,features=prefilter(gj['features'],filt))
+def _grp(g):
+    gg=dict(id=g['id'],name=g['name'],collapsed=g.get('collapsed',False),visible=True,opacity=1)
+    if g.get('parent'): gg['parentId']=g['parent']
+    return gg
+def compose(bv,projects=(),view=None,name=None,regions=None):
+    """Build a GeoLibre project dict: base version bv + regional packs + project slugs (in order).
+    Order of layers in the file: base (style stack) < region packs (style stack) < project layers."""
     B=base_manifest(bv); S=load_style(B['style_version']); reg=registry()
     P=[project_cfg(s) for s in projects]
     for p in P:
         if p['base_version']!=bv: raise SystemExit(f"project {p['slug']} is pinned to {p['base_version']}, not {bv}; run upgrade_project.py")
-    ov=merge_overrides(P,S)
+    R=resolve_regions(P,regions)
+    for r in R:
+        if style_key(B['style_version'])<style_key(r.get('style_min','s1.0')): raise SystemExit(f"region {r['region']} {r['region_version']} needs style ≥ {r['style_min']}, base {bv} has {B['style_version']}")
+    region_ids={e['id'] for r in R for e in r['layers']}
+    dup=region_ids & {e['id'] for e in B['layers']}
+    if dup: raise SystemExit(f"layers {sorted(dup)} are both in base {bv} and a region pack")
+    ov=merge_overrides(P,S,region_ids)
     hidden=set(sum([p.get('hide_base_layers',[]) for p in P],[]))
-    groups=[]
-    for g in S['groups']:
-        used={reg['layers'][l['id']]['group'] for l in B['layers']}
-        if g['id']=='g_roads' and 'g_roads' not in used: continue
-        if g['id']=='g_proj' and not P: continue
-        gg=dict(id=g['id'],name=g['name'],collapsed=g.get('collapsed',False),visible=True,opacity=1)
-        if g.get('parent'): gg['parentId']=g['parent']
-        groups.append(gg)
+    # entries = (layer id, pinned version, group id, owner) for base + region layers
+    ents=[(e['id'],e['version'],reg['layers'][e['id']]['group'],'base') for e in B['layers']]
+    for r in R: ents+=[(e['id'],e['version'],e.get('group',reg['layers'][e['id']]['group']),f"region:{r['region']}") for e in r['layers']]
     layers=[]
-    for ent in B['layers']:
-        lid=ent['id']; L,v=layer_version(reg,lid,ent['version'])
+    for lid,ver,gid,owner in ents:
+        L,v=layer_version(reg,lid,ver)
+        if lid not in S['layers']: raise SystemExit(f"style {S['style_version']} has no spec for layer {lid}")
         spec=deep_merge(S['layers'][lid],ov.get(lid,{}))
         gj=load_geojson(f"{ROOT}/{v['file']}")
-        rel=f"data/{L['group']}/{lid}.geojson"
-        lineage=f"גרסה {v['version']}; הורד {v['data_date']}; עודכן במקור {v.get('source_modified') or '?'}; {v['features']} ישויות; {L.get('crs','')}"+(f"; {L['note']}" if L.get('note') else "")
+        rel=f"data/{gid}/{lid}.geojson"
+        lineage=f"גרסה {v['version']}; הורד {v['data_date']}; עודכן במקור {v.get('source_modified') or '?'}; {v['features']} ישויות; {L.get('crs','')}"+(f"; {L['note']}" if L.get('note') else "")+("" if owner=='base' else f"; חבילה אזורית {owner[7:]}")
         desc=dict(title=L['title'],attribution=L['attribution'],lineage=lineage)
         if L['source'].get('dataset'): desc['links']=[{"href":L['source']['dataset'],"rel":"via","title":"data.gov.il"}]
         desc={k:desc[k] for k in ['title','attribution','links','lineage'] if k in desc}
-        lay=_layer(lid,L['title'],L['group'],geolibre_style(spec,S),popup(L['popup']),spec.get('visible',True) and lid not in hidden,gj,rel,desc,spec.get('filter'))
-        lay['_web']=L.get('web',{}); layers.append(lay)
-    # derived layers: style entries with "source": <registry id> reuse that layer's data + pinned version (review §5.1)
-    pinned={e['id']:e['version'] for e in B['layers']}
+        lay=_layer(lid,L['title'],gid,geolibre_style(spec,S),popup(L['popup']),spec.get('visible',True) and lid not in hidden,gj,rel,desc,spec.get('filter'),spec.get('opacity',1))
+        lay['_web']=L.get('web',{}); lay['_owner']=owner; layers.append(lay)
+    # derived layers: style entries with "source": <registry id> reuse that layer's data + pinned version + group (review §5.1)
+    pinned={lid:(ver,gid,owner) for lid,ver,gid,owner in ents}
     for did,dspec in S['layers'].items():
         src=dspec.get('source')
         if not src or src not in pinned: continue
-        L,v=layer_version(reg,src,pinned[src]); spec=deep_merge(dspec,ov.get(did,{}))
+        ver,gid,owner=pinned[src]; L,v=layer_version(reg,src,ver); spec=deep_merge(dspec,ov.get(did,{}))
         desc=dict(title=spec.get('title',L['title']),attribution=L['attribution'],lineage=f"נגזרת מ־{src} (גרסה {v['version']}); "+(f"מסנן: {json.dumps(spec.get('filter'),ensure_ascii=False)}" if spec.get('filter') else ""))
-        lay=_layer(did,spec.get('title',L['title']),L['group'],geolibre_style(spec,S),popup(L['popup']),spec.get('visible',True) and src not in hidden and did not in hidden,
-                   load_geojson(f"{ROOT}/{v['file']}"),f"data/{L['group']}/{src}.geojson",desc,spec.get('filter'))
-        lay['_web']=L.get('web',{}); lay['_legend']=spec.get('legend',True); layers.append(lay)
+        lay=_layer(did,spec.get('title',L['title']),gid,geolibre_style(spec,S),popup(L['popup']),spec.get('visible',True) and src not in hidden and did not in hidden,
+                   _prefiltered(load_geojson(f"{ROOT}/{v['file']}"),spec.get('filter')),f"data/{gid}/{src}.geojson",desc,spec.get('filter'),spec.get('opacity',1))
+        lay['_web']=L.get('web',{}); lay['_legend']=spec.get('legend',True); lay['_owner']=owner; layers.append(lay)
     for l in layers:
         if l['id'] in S['layers'] and S['layers'][l['id']].get('legend') is False: l['_legend']=False
+    # groups: style groups, then region groups, then project groups – only groups that hold a layer (or an ancestor of one)
+    gdefs=[g for g in S['groups'] if g['id']!='g_proj']
+    for r in R: gdefs+=r.get('groups',[])
+    gdefs+=[g for g in S['groups'] if g['id']=='g_proj']
+    for p in P: gdefs+=p['groups']
+    parent={g['id']:g.get('parent') for g in gdefs}
     order=[g['id'] for g in S['groups']] if 'layer_order' not in S else list(S['layer_order'])
+    for r in R: order+=[g['id'] for g in r.get('groups',[])]
+    byid_p={}
     for p in P:
-        for g in p['groups']:
-            gg=dict(id=g['id'],name=g['name'],collapsed=g.get('collapsed',False),visible=True,opacity=1)
-            if g.get('parent'): gg['parentId']=g['parent']
-            groups.append(gg); order.append(g['id'])
+        order+=[g['id'] for g in p['groups']]
         byid={l['id']:l for l in p['layers']}
         for pl in p['layers']:
             if pl.get('derived_from'):   # derived project layer: same file/version/popup as its source entry, own style/filter
@@ -173,10 +211,15 @@ def compose(bv,projects=(),view=None,name=None):
             spec=deep_merge(pl['style'],ov.get(pl['id'],{}))
             gj=load_geojson(f"{ROOT}/projects/{p['slug']}/{pl['file']}")
             desc={k:v for k,v in dict(title=pl.get('desc_title',pl['title']),attribution=pl.get('attribution'),lineage=f"גרסה {pl['version']}; "+pl.get('lineage','')).items() if v}
-            lay=_layer(pl['id'],pl['title'],pl['group'],geolibre_style(spec,S),popup(pl['popup']),spec.get('visible',True),gj,f"data/{pl['group']}/{pl['id']}.geojson",desc,spec.get('filter'))
-            lay['_web']=pl.get('web',{}); lay['_legend']=pl.get('legend',True); lay['_proj']=True; layers.append(lay)
+            lay=_layer(pl['id'],pl['title'],pl['group'],geolibre_style(spec,S),popup(pl['popup']),spec.get('visible',True),gj,f"data/{pl['group']}/{pl['id']}.geojson",desc,spec.get('filter'),spec.get('opacity',1))
+            lay['_web']=pl.get('web',{}); lay['_legend']=pl.get('legend',True); lay['_proj']=True; lay['_owner']=f"project:{p['slug']}"; layers.append(lay)
+    used=set()
+    for l in layers:
+        g=l['groupId']
+        while g and g not in used: used.add(g); g=parent.get(g)
+    groups=[_grp(g) for g in gdefs if g['id'] in used]
     stack=S.get('layer_stack_bottom_to_top')
-    if stack:   # review §5.2: explicit bottom→top stack for base layers; project layers above, in project order
+    if stack:   # review §5.2: explicit bottom→top stack for base + region layers; project layers above, in project order
         def key(l):
             if l.get('_proj'): return (2,order.index(l['groupId']) if l['groupId'] in order else len(order),0)
             if l['id'] in stack: return (0,stack.index(l['id']),0)
@@ -186,42 +229,51 @@ def compose(bv,projects=(),view=None,name=None):
         layers.sort(key=lambda l:order.index(l['groupId']) if l['groupId'] in order else len(order))
     now=int(time.time()*1000)
     bms=[dict(b,pitch=0,bearing=0,createdAt=now,groupId="regions") for b in B['bookmarks']]
-    bgroups=[{"id":"regions","name":"אזורי פרויקטים","collapsed":False}]
+    bgroups=[{"id":"regions","name":"אזורים","collapsed":False}]
+    for r in R:
+        for b in r.get('bookmarks',[]): bms.append(dict(b,pitch=0,bearing=0,createdAt=now,groupId="regions"))
     for p in P:
         for b in p.get('bookmarks',[]): bms.append(dict(b,pitch=0,bearing=0,createdAt=now,groupId="projects"))
     if P: bgroups.append({"id":"projects","name":"פרויקטים","collapsed":False})
-    mv=view or (P[-1]['map_view'] if P and P[-1].get('map_view') else B['map_view'])
-    title=name or (P[-1]['title'] if P else B['name'])
-    meta=dict(description=B['description']+("" if not P else " פרויקטים: "+", ".join(p['title'] for p in P)),created=B['created'],built=today(),
+    mv=view or (P[-1]['map_view'] if P and P[-1].get('map_view') else (R[-1]['map_view'] if R and R[-1].get('map_view') else B['map_view']))
+    title=name or (P[-1]['title'] if P else (f"{B['name']} · {R[-1]['title']}" if R else B['name']))
+    descr=B['description']+("" if not R else " חבילות אזוריות: "+", ".join(f"{r['title']} ({r['region_version']})" for r in R)+".")+("" if not P else " פרויקטים: "+", ".join(p['title'] for p in P))
+    meta=dict(description=descr,created=B['created'],built=today(),
         base_version=bv,style_version=B['style_version'],layer_versions={l['id']:l['version'] for l in B['layers']},
-        projects=[dict(slug=p['slug'],project_version=p['project_version'],base_version=p['base_version']) for p in P],
+        regions=[dict(id=r['region'],region_version=r['region_version'],layer_versions={e['id']:e['version'] for e in r['layers']}) for r in R],
+        projects=[dict(slug=p['slug'],project_version=p['project_version'],base_version=p['base_version'],regions=p.get('regions',[])) for p in P],
         toolkit="https://github.com/asafnb/mobility-sense-basemap/tree/main/toolkit",
         note=S['planned']['_note'])
     proj=dict(version="0.2.0",name=title,mapView=dict(center=mv['center'],zoom=mv['zoom'],bearing=0,pitch=0),
         basemapStyleUrl=S['basemap']['url'],basemapVisible=S['basemap']['visible'],basemapOpacity=S['basemap']['opacity'],blankBackgroundColor=None,
         layers=layers,selectedLayerId=None,layerGroups=groups,styles={},bookmarkGroups=bgroups,bookmarks=bms,
-        legend=build_legend(S,P,layers,bv,B['style_version']),
+        legend=build_legend(S,P,layers,bv,B['style_version'],R),
         interaction=S['interaction'],metadata=meta)
     return proj
-def build_legend(S,P,layers,bv,sv):
+def build_legend(S,P,layers,bv,sv,R=()):
     """Review §3/§5.3: pass legend.order (top-first) / customEntries / overrides through. Project legend entries go on top
-    (after the 'how to read' section); helper layers (legend:false) are hidden. Title carries style+base version for traceability."""
+    (after the 'how to read' section), then region-pack entries, then the base; helper layers (legend:false) are hidden.
+    Title carries style+base(+region) version for traceability."""
     SL=S['legend']; ids=[l['id'] for l in layers]
     ce=copy.deepcopy(SL.get('customEntries',{})); ovr=copy.deepcopy(SL.get('overrides',{}))
     proj_order=[]
     for p in P:
         pl=p.get('legend',{}); ce.update(copy.deepcopy(pl.get('customEntries',{}))); ovr.update(copy.deepcopy(pl.get('overrides',{})))
         proj_order+=pl.get('order',[l['id'] for l in p['layers']])
+    reg_order=[i for r in R for i in r.get('legend_order',[e['id'] for e in r['layers']])]
     for l in layers:
         if l.get('_legend') is False: ovr[l['id']]={"hidden":True}
     if 'order' in SL:
         base=[i for i in SL['order'] if i in ids or i.startswith('custom:')]
         head=[i for i in base if i.startswith('custom:')]; base=[i for i in base if not i.startswith('custom:')]
-        order=head+[i for i in proj_order if i in ids]+base
+        order=[]
+        for i in head+[i for i in proj_order if i in ids]+[i for i in reg_order if i in ids]+base:
+            if i not in order: order.append(i)
         order+=[i for i in reversed(ids) if i not in order]          # anything not listed: top-first by draw order
     else: order=list(reversed(ids))                                   # s1: legend.order is top-first = reverse draw order
     ce={k:v for k,v in ce.items() if k in ids or k.startswith('custom:')}; ovr={k:v for k,v in ovr.items() if k in ids}
-    d=dict(title=f"{SL['title']} · {sv} / {bv}",groupByLayer=SL['groupByLayer'],order=order,overrides=ovr)
+    rv="".join(f" + {r['region']} {r['region_version']}" for r in R)
+    d=dict(title=f"{SL['title']} · {sv} / {bv}{rv}",groupByLayer=SL['groupByLayer'],order=order,overrides=ovr)
     if ce: d['customEntries']=ce
     return d
 # ---------- outputs ----------
@@ -248,13 +300,15 @@ def prefilter(feats,filt):
     if not filt: return feats
     try: return [f for f in feats if eval_filter(filt,f.get('properties') or {})]
     except _NoEval: return feats
-def web_slim(proj,nd=5,tol=0.00005):
-    """Slim copy for GitHub / web.geolibre.app: 5-decimal coords, ~5 m simplification, only used props, optional dissolve."""
-    from shapely.geometry import shape,mapping
+def web_slim(proj,nd=5,tol=0.00005,clip=None,clip_minzoom=11):
+    """Slim copy for GitHub / web.geolibre.app: 5-decimal coords, ~5 m simplification, only used props, optional dissolve.
+    clip=[W,S,E,N] (project web copies): base layers that only show from zoom >= clip_minzoom (city-scale: bike paths, planned bus lanes)
+    keep only the features that touch the bbox; national-scale layers, region packs and project layers stay complete."""
+    from shapely.geometry import shape,mapping,box
     from shapely.geometry import MultiLineString,MultiPolygon,MultiPoint
     out=copy.deepcopy(proj); new=[]
     for l in out['layers']:
-        w=l.pop('_web',{}) or {}
+        w=dict(l.pop('_web',{}) or {},_owner=l.get('_owner'))
         for k in [k for k in l if k.startswith('_')]: l.pop(k)
         s=l['style']; keep=[f['field'] for f in l['popup']['fields']]
         if w.get('fields'): keep=[k for k in keep if k in w['fields']]; l['popup']['fields']=[f for f in l['popup']['fields'] if f['field'] in keep]
@@ -265,10 +319,11 @@ def web_slim(proj,nd=5,tol=0.00005):
         for r in s.get('vectorRules') or []:
             f=r.get('filter'); f=json.loads(f) if isinstance(f,str) and f.strip().startswith('[') else f
             need|=set(re.findall(r'"get",\s*"([^"]+)"',json.dumps(f,ensure_ascii=False)))
-        feats=[]
+        feats=[]; cb=box(*clip) if clip and w.get('_owner')=='base' and (s.get('minZoom') or 0)>=clip_minzoom else None
         for f in prefilter(l['geojson']['features'],l.get('filterExpression')):   # web copy: drop features the layer filter hides
             if not f.get('geometry'): continue
             g=shape(f['geometry'])
+            if cb is not None and not g.intersects(cb): continue
             if g.geom_type not in('Point','MultiPoint'): g=g.simplify(tol,preserve_topology=True)
             if g.is_empty: continue
             feats.append(({k:v for k,v in (f.get('properties') or {}).items() if k in need},g))
@@ -282,9 +337,17 @@ def web_slim(proj,nd=5,tol=0.00005):
                 t=parts[0].geom_type
                 M={'LineString':MultiLineString,'Polygon':MultiPolygon,'Point':MultiPoint}[t]
                 feats.append((pr,M(parts) if len(parts)>1 else parts[0]))
+        if not feats: continue   # (clipped layer empty in the bbox – dropped from the web copy)
         l['geojson']={"type":"FeatureCollection","features":[{"type":"Feature","properties":pr,"geometry":dict(type=mapping(g)['type'],coordinates=_rnd(_tolist(mapping(g)['coordinates']),nd))} for pr,g in feats]}
         new.append(l)
-    out['layers']=new; out['metadata']=dict(out['metadata'],web_copy=f"גרסה קלה לרשת: קואורדינטות 5 ספרות, פישוט ~5 מ׳, שדות מצומצמים. הגרסה המלאה בדרייב.")
+    dropped={l['id'] for l in out['layers']}-{l['id'] for l in new}
+    if dropped:
+        lg=out['legend']; lg['order']=[i for i in lg['order'] if i not in dropped]
+        for k in ('customEntries','overrides'):
+            if k in lg: lg[k]={i:v for i,v in lg[k].items() if i not in dropped}
+    note="גרסה קלה לרשת: קואורדינטות 5 ספרות, פישוט ~5 מ׳, שדות מצומצמים. הגרסה המלאה בדרייב."
+    if clip: note+=f" שכבות עירוניות (מזום {clip_minzoom}+) של הבסיס חתוכות לאזור הפרויקט {clip}."
+    out['layers']=new; out['metadata']=dict(out['metadata'],web_copy=note)
     return out
 def _tolist(c):
     if isinstance(c,(list,tuple)) and c and isinstance(c[0],(int,float)): return [c[0],c[1]]
@@ -307,14 +370,14 @@ def validate(proj,label=""):
     for k in proj['legend'].get('customEntries',{}): assert k in ids or k.startswith('custom:'),k
     json.loads(json.dumps(proj,ensure_ascii=False))
     return f"OK {label}: {len(ids)} layers, {len(proj['layerGroups'])} groups, {len(proj['bookmarks'])} bookmarks"
-def write_outputs(proj,stem,outdir=DIST,web=True):
+def write_outputs(proj,stem,outdir=DIST,web=True,web_clip=None):
     os.makedirs(outdir,exist_ok=True)
     full=strip_internal(proj); print(validate(full,"full"))
     fp=f"{outdir}/{stem}.geolibre"
     if os.path.exists(fp): raise SystemExit(f"{fp} exists – versioned outputs are never overwritten. Bump the version.")
     save_json(fp,full,compact=True); res=dict(full=fp,full_bytes=os.path.getsize(fp))
     if web:
-        wp=f"{outdir}/{stem}.web.geolibre.json"; w=web_slim(proj); print(validate(w,"web"))
+        wp=f"{outdir}/{stem}.web.geolibre.json"; w=web_slim(proj,clip=web_clip); print(validate(w,"web"))
         save_json(wp,w,compact=True); res.update(web=wp,web_bytes=os.path.getsize(wp))
         if res['web_bytes']>3_300_000: print(f"WARNING web copy {res['web_bytes']/1e6:.2f} MB > 3.3 MB connector limit")
     print(json.dumps(res,ensure_ascii=False)); return res
