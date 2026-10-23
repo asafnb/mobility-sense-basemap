@@ -1,0 +1,110 @@
+{
+ "base_version": "v5",
+ "created": "2026-10-23",
+ "name": "Mobility Sense – מפת בסיס ישראל",
+ "description": "מפת בסיס לכל פרויקטי Mobility Sense. שכבות משרד התחבורה (חצב, דרך data.gov.il).",
+ "previous": "v4",
+ "style_version": "s3.0",
+ "layers": [
+  {
+   "id": "nataz_kayam",
+   "version": "2026-10"
+  },
+  {
+   "id": "nataz_planned",
+   "version": "2026-10"
+  },
+  {
+   "id": "bph_infra_exist",
+   "version": "2026-10"
+  },
+  {
+   "id": "bph_infra_plan",
+   "version": "2026-10"
+  },
+  {
+   "id": "ofneidan",
+   "version": "2026-10"
+  },
+  {
+   "id": "lrt_line",
+   "version": "2026-10"
+  },
+  {
+   "id": "lrt_stat",
+   "version": "2026-10"
+  },
+  {
+   "id": "metro_line",
+   "version": "2026-10"
+  },
+  {
+   "id": "metro_stat",
+   "version": "2026-10"
+  },
+  {
+   "id": "brt_line",
+   "version": "2026-10"
+  },
+  {
+   "id": "rail_strategic",
+   "version": "2026-10"
+  },
+  {
+   "id": "rail_stat",
+   "version": "2026-10"
+  },
+  {
+   "id": "rail_strat_station",
+   "version": "2026-10"
+  }
+ ],
+ "map_view": {
+  "center": [
+   34.95,
+   31.45
+  ],
+  "zoom": 7.2
+ },
+ "bookmarks": [
+  {
+   "id": "il",
+   "name": "ישראל – מבט כללי",
+   "lng": 34.95,
+   "lat": 31.45,
+   "zoom": 7.2
+  },
+  {
+   "id": "dan",
+   "name": "גוש דן / תל אביב",
+   "lng": 34.8,
+   "lat": 32.07,
+   "zoom": 11.5
+  },
+  {
+   "id": "jlm",
+   "name": "ירושלים",
+   "lng": 35.205,
+   "lat": 31.785,
+   "zoom": 12
+  },
+  {
+   "id": "hfa",
+   "name": "חיפה / הקריות",
+   "lng": 35.05,
+   "lat": 32.81,
+   "zoom": 11.5
+  },
+  {
+   "id": "bs",
+   "name": "באר שבע",
+   "lng": 34.8,
+   "lat": 31.25,
+   "zoom": 12
+  }
+ ],
+ "note": "בסיס ארצי בלבד: שכבות ירושלים עברו לחבילה האזורית jerusalem j1 (regions/jerusalem). עיצוב s3.0: צבע אחד לכל משפחת תשתית, הסטטוס בסגנון הקו.",
+ "outputs": {
+  "full_drive_file_id": "1kZfAaTVyzZfVZX-znB4FyxJo4746S3I8"
+ }
+}

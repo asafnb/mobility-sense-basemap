@@ -1,0 +1,3486 @@
+{
+ "style_version": "s3.0",
+ "updated": "2026-10-23",
+ "description": "סגנון מפת הבסיס של Mobility Sense. s3.0 = צבע אחד לכל משפחת תשתית (נת״צ, אופניים, אופנידן, רכבת קלה לפי צבע קו, מטרו, BRT, רכבת כבדה). הסטטוס מוצג בסגנון הקו ולא בצבע: קיים = קו עבה, רציף, אטום; בביצוע = קו חלול; מתוכנן = קו דק, מקווקו (ריבועים לבנים) ושקוף 60%. בוטל/מוקפא לא מוצגים. שכבות ירושלים בלבד עברו לחבילה האזורית regions/jerusalem.",
+ "basemap": {
+  "url": "https://tiles.openfreemap.org/styles/positron",
+  "visible": true,
+  "opacity": 1
+ },
+ "palette": {
+  "BUS": "#B0185E",
+  "BIKE": "#3B8A00",
+  "RAIL": "#3F4651",
+  "METRO": "#312E81",
+  "BRT": "#D95F02",
+  "INK": "#1F2937",
+  "WHITE": "#FFFFFF",
+  "GREY": "#6B7280",
+  "PROJ_ROAD": "#6D28D9",
+  "PROJ_ROAD_INK": "#4C1D95",
+  "PROJ_POI": "#F59E0B",
+  "PROJ_POI_INK": "#92400E",
+  "PROJ_CO": "#0D9488",
+  "PROJ_CO_INK": "#115E59",
+  "OFN": "#0F766E",
+  "ROAD_NEW": "#6D28D9",
+  "ROAD_NEW_INK": "#4C1D95",
+  "POI_CO": "#0D9488",
+  "POI_CO_INK": "#115E59"
+ },
+ "categories": {
+  "LRT": {
+   "אדום": "#E11D48",
+   "קו אדום קיים": "#E11D48",
+   "אדום מקוקו": "#E11D48",
+   "ירוק": "#16A34A",
+   "ירוק מקוקו": "#16A34A",
+   "ירוק בהיר": "#84CC16",
+   "סגול": "#7C3AED",
+   "כחול": "#2563EB",
+   "תכלת": "#0EA5E9",
+   "צהוב": "#CA8A04",
+   "נופית": "#0D9488",
+   "ורוד": "#DB2777",
+   "חום": "#92400E",
+   "חום דרומי": "#B45309"
+  },
+  "EN": {
+   "RED": "#E11D48",
+   "GREEN": "#16A34A",
+   "LIGHT GREEN": "#84CC16",
+   "BLUE": "#2563EB",
+   "LIGHT BLUE": "#0EA5E9",
+   "PINK": "#DB2777",
+   "YELLOW": "#CA8A04",
+   "BROWN": "#92400E",
+   "ORANGE": "#EA580C",
+   "PURPLE": "#7C3AED"
+  }
+ },
+ "line_defaults": {
+  "fillOpacity": 1,
+  "_note": "was 0.3: GeoLibre multiplies legend swatch opacity by fillOpacity, so every auto line swatch was drawn at 30%"
+ },
+ "point_defaults": {
+  "strokeColor": "#ffffff",
+  "strokeWidth": 1,
+  "fillOpacity": 0.95
+ },
+ "planned": {
+  "lineDecoration": "square",
+  "lineDecorationColor": "#ffffff",
+  "lineDecorationSize": 6,
+  "lineDecorationSpacing": 13,
+  "_note": "מתוכנן = אותו צבע כמו הקיים, קו דק יותר + ריבועים לבנים לאורכו (מראה מקווקו; GeoLibre אינו תומך ב-dasharray) + שקיפות 60% (opacity). בביצוע = קו חלול (שכבת צבע + ליבה לבנה). קיים = קו עבה, רציף, אטום.",
+  "opacity": 0.6
+ },
+ "label_defaults": {
+  "enabled": false,
+  "field": "",
+  "expression": "",
+  "placement": "point",
+  "size": 12,
+  "color": "#1f2937",
+  "haloColor": "#ffffff",
+  "haloWidth": 2,
+  "minZoom": 0,
+  "maxZoom": 24,
+  "allowOverlap": false,
+  "anchor": "center",
+  "offsetX": 0,
+  "offsetY": 0,
+  "rotation": 0,
+  "maxWidth": 8,
+  "transform": "none",
+  "numberFormatEnabled": false,
+  "numberDecimals": 0,
+  "numberLocale": "",
+  "dedupe": "off",
+  "sizeExpression": "",
+  "colorExpression": "",
+  "opacityExpression": "",
+  "visibilityExpression": "",
+  "priorityExpression": ""
+ },
+ "groups": [
+  {
+   "id": "g_nataz",
+   "name": "נת\"צ"
+  },
+  {
+   "id": "g_bike",
+   "name": "אופניים"
+  },
+  {
+   "id": "g_mataan",
+   "name": "מתע\"ן"
+  },
+  {
+   "id": "g_lrt",
+   "name": "רכבת קלה",
+   "parent": "g_mataan"
+  },
+  {
+   "id": "g_metro",
+   "name": "מטרו",
+   "parent": "g_mataan"
+  },
+  {
+   "id": "g_brt",
+   "name": "BRT",
+   "parent": "g_mataan"
+  },
+  {
+   "id": "g_rail",
+   "name": "רכבת כבדה",
+   "parent": "g_mataan"
+  },
+  {
+   "id": "g_roads",
+   "name": "כבישים (תמ״א 42)"
+  },
+  {
+   "id": "g_proj",
+   "name": "פרויקטים"
+  }
+ ],
+ "legend": {
+  "title": "מקרא – Mobility Sense",
+  "groupByLayer": true,
+  "order": [
+   "custom:status",
+   "lrt_line",
+   "metro_line",
+   "brt_line",
+   "rail_strategic",
+   "rail_stat",
+   "nataz_kayam",
+   "ofneidan",
+   "bph_infra_exist",
+   "metro_line_jlm",
+   "mataan_jlm_2040",
+   "mataan_jlm_2050",
+   "bicycle_jer_2019",
+   "road22_jlm",
+   "hh_companies"
+  ],
+  "customEntries": {
+   "custom:status": {
+    "title": "איך לקרוא את המפה: צבע = סוג תשתית · סגנון הקו = סטטוס",
+    "items": [
+     {
+      "label": "קיים – קו עבה, רציף, צבע מלא",
+      "color": "#3F4651",
+      "shape": "line",
+      "size": 4
+     },
+     {
+      "label": "בביצוע – קו חלול (מסגרת בצבע, ליבה לבנה)",
+      "color": "#3F4651",
+      "shape": "line",
+      "size": 4
+     },
+     {
+      "label": "מתוכנן – אותו צבע, קו דק מקווקו ושקוף",
+      "color": "#8C9097",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "בוטל / מוקפא – לא מוצג",
+      "color": "#D1D5DB",
+      "shape": "line",
+      "size": 1
+     }
+    ]
+   },
+   "lrt_line": {
+    "title": "רכבת קלה (צבע = צבע הקו) – קיים / בביצוע / מתוכנן",
+    "items": [
+     {
+      "label": "קיים – קו עבה ורציף (אדום: ת״א, ירושלים)",
+      "color": "#E11D48",
+      "shape": "line",
+      "size": 4
+     },
+     {
+      "label": "בביצוע – קו חלול (סגול)",
+      "color": "#7C3AED",
+      "shape": "line",
+      "size": 4
+     },
+     {
+      "label": "מתוכנן – אדום",
+      "color": "#ED7791",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – ירוק",
+      "color": "#73C892",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – ירוק בהיר",
+      "color": "#B5E073",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – סגול",
+      "color": "#B089F4",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – כחול",
+      "color": "#7CA1F3",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – תכלת",
+      "color": "#6EC9F2",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – צהוב",
+      "color": "#DFB968",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – נופית",
+      "color": "#6EBFB8",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – ורוד",
+      "color": "#E97DAD",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – חום",
+      "color": "#BE8C6E",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "מתוכנן – חום דרומי",
+      "color": "#D2986B",
+      "shape": "line",
+      "size": 2
+     }
+    ]
+   },
+   "metro_line": {
+    "title": "מטרו גוש דן (M1–M3) – מתוכנן",
+    "items": [
+     {
+      "label": "מתוכנן – קו דק, מקווקו ושקוף",
+      "color": "#8382B3",
+      "shape": "line",
+      "size": 3
+     }
+    ]
+   },
+   "brt_line": {
+    "title": "BRT – בביצוע / מתוכנן",
+    "items": [
+     {
+      "label": "בביצוע – קו חלול",
+      "color": "#D95F02",
+      "shape": "line",
+      "size": 4
+     },
+     {
+      "label": "בתכנון / בדיקת ישימות – קו דק, מקווקו ושקוף",
+      "color": "#E89F67",
+      "shape": "line",
+      "size": 2
+     }
+    ]
+   },
+   "rail_strategic": {
+    "title": "רכבת כבדה – פעילה / מתוכננת",
+    "items": [
+     {
+      "label": "פעילה – קו עבה ורציף",
+      "color": "#3F4651",
+      "shape": "line",
+      "size": 3
+     },
+     {
+      "label": "מתוכננת / לא פעילה – קו דק, מקווקו ושקוף",
+      "color": "#8C9097",
+      "shape": "line",
+      "size": 1.6
+     }
+    ]
+   },
+   "rail_stat": {
+    "title": "תחנות רכבת",
+    "items": [
+     {
+      "label": "פעילה",
+      "color": "#3F4651",
+      "shape": "circle",
+      "size": 5
+     },
+     {
+      "label": "בבנייה",
+      "color": "#9CA3AF",
+      "shape": "circle",
+      "size": 5
+     }
+    ]
+   },
+   "nataz_kayam": {
+    "title": "נת״צ – קיים / בביצוע / מתוכנן",
+    "items": [
+     {
+      "label": "קיים – קו עבה ורציף",
+      "color": "#B0185E",
+      "shape": "line",
+      "size": 3
+     },
+     {
+      "label": "בביצוע – קו חלול",
+      "color": "#B0185E",
+      "shape": "line",
+      "size": 3.5
+     },
+     {
+      "label": "מתוכנן (מזום 11) – קו דק, מקווקו ושקוף",
+      "color": "#D0749E",
+      "shape": "line",
+      "size": 1.4
+     }
+    ]
+   },
+   "ofneidan": {
+    "title": "אופנידן – קיים / בביצוע / מתוכנן",
+    "items": [
+     {
+      "label": "נפתח לתנועה – קו עבה ורציף",
+      "color": "#0F766E",
+      "shape": "line",
+      "size": 3.5
+     },
+     {
+      "label": "בביצוע – קו חלול",
+      "color": "#0F766E",
+      "shape": "line",
+      "size": 4
+     },
+     {
+      "label": "בתכנון (מזום 11; ללא HOLD) – קו דק, מקווקו ושקוף",
+      "color": "#6FADA8",
+      "shape": "line",
+      "size": 2
+     }
+    ]
+   },
+   "bph_infra_exist": {
+    "title": "תשתית רכיבה – קיים / בביצוע / מתוכנן",
+    "items": [
+     {
+      "label": "קיימת (מזום 11) – קו עבה ורציף",
+      "color": "#3B8A00",
+      "shape": "line",
+      "size": 2.5
+     },
+     {
+      "label": "בביצוע – קו חלול",
+      "color": "#3B8A00",
+      "shape": "line",
+      "size": 3
+     },
+     {
+      "label": "מתוכננת (מזום 12; ללא בוטל/מוקפא) – קו דק, מקווקו ושקוף",
+      "color": "#89B966",
+      "shape": "line",
+      "size": 1.2
+     }
+    ]
+   },
+   "metro_line_jlm": {
+    "title": "ירושלים · מטרו – מתוכנן",
+    "items": [
+     {
+      "label": "מתוכנן – קו דק, מקווקו ושקוף",
+      "color": "#8382B3",
+      "shape": "line",
+      "size": 3
+     }
+    ]
+   },
+   "mataan_jlm_2040": {
+    "title": "ירושלים · תוכנית מתע״ן 2040 – מתוכנן (צבע = צבע הקו)",
+    "items": [
+     {
+      "label": "קו מתוכנן",
+      "color": "#73C892",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "קו מתוכנן",
+      "color": "#7CA1F3",
+      "shape": "line",
+      "size": 2
+     }
+    ]
+   },
+   "mataan_jlm_2050": {
+    "title": "ירושלים · תוכנית מתע״ן 2050 – מתוכנן (צבע = צבע הקו)",
+    "items": [
+     {
+      "label": "קו מתוכנן",
+      "color": "#ED7791",
+      "shape": "line",
+      "size": 2
+     },
+     {
+      "label": "קו מתוכנן",
+      "color": "#B089F4",
+      "shape": "line",
+      "size": 2
+     }
+    ]
+   },
+   "bicycle_jer_2019": {
+    "title": "ירושלים · שבילי אופניים 2019 – קיים / בתכנון",
+    "items": [
+     {
+      "label": "קיים – קו עבה ורציף",
+      "color": "#3B8A00",
+      "shape": "line",
+      "size": 2.5
+     },
+     {
+      "label": "בתכנון – קו דק, מקווקו ושקוף",
+      "color": "#89B966",
+      "shape": "line",
+      "size": 1.2
+     }
+    ]
+   },
+   "road22_jlm": {
+    "title": "ירושלים · כביש 22 – בביצוע (קו חלול)",
+    "items": [
+     {
+      "label": "בביצוע · פתיחה צפויה: סוף 2027",
+      "color": "#6D28D9",
+      "shape": "line",
+      "size": 5
+     }
+    ]
+   },
+   "hh_companies": {
+    "title": "ירושלים · חברות ומשרדים – הר החוצבים",
+    "items": [
+     {
+      "label": "חברה / משרד",
+      "color": "#0D9488",
+      "shape": "circle",
+      "size": 6
+     }
+    ]
+   }
+  },
+  "overrides": {
+   "nataz_planned": {
+    "hidden": true
+   },
+   "nataz_planned__constr": {
+    "hidden": true
+   },
+   "bph_infra_plan": {
+    "hidden": true
+   },
+   "bph_infra_plan__constr": {
+    "hidden": true
+   },
+   "ofneidan__constr": {
+    "hidden": true
+   },
+   "ofneidan__plan": {
+    "hidden": true
+   },
+   "rail_strategic__plan": {
+    "hidden": true
+   },
+   "brt_line__constr": {
+    "hidden": true
+   },
+   "lrt_line__constr": {
+    "hidden": true
+   },
+   "lrt_line__plan": {
+    "hidden": true
+   },
+   "bicycle_jer_2019__plan": {
+    "hidden": true
+   },
+   "rail_strategic__plan_nat": {
+    "hidden": true
+   },
+   "brt_line__nat": {
+    "hidden": true
+   },
+   "brt_line__constr_core": {
+    "hidden": true
+   },
+   "metro_line__nat": {
+    "hidden": true
+   },
+   "lrt_line__plan_nat": {
+    "hidden": true
+   },
+   "lrt_line__constr_core": {
+    "hidden": true
+   },
+   "ofneidan__constr_core": {
+    "hidden": true
+   },
+   "nataz_planned__constr_core": {
+    "hidden": true
+   },
+   "bph_infra_plan__constr_core": {
+    "hidden": true
+   },
+   "road22_jlm__core": {
+    "hidden": true
+   }
+  },
+  "_order_note": "סדר המקרא מלמעלה למטה. מקטע אחד לכל משפחת תשתית, שורה לכל סטטוס; שכבות הסטטוס האחרות של אותה משפחה מוסתרות במקרא (overrides). צבעי 'מתוכנן' במקרא = הצבע בשקיפות 60% על לבן."
+ },
+ "interaction": {
+  "identify": "all",
+  "controls": {
+   "bookmark": true,
+   "scale": true,
+   "search": true
+  }
+ },
+ "layers": {
+  "bicycle_jer_2019": {
+   "kind": "line",
+   "color": "@BIKE",
+   "width": 1.5,
+   "visible": false,
+   "filter": [
+    "==",
+    [
+     "get",
+     "status"
+    ],
+    "קיים"
+   ],
+   "extra": {
+    "minZoom": 11,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.0,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.5,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 2.6,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "bph_infra_plan": {
+   "kind": "line",
+   "color": "@BIKE",
+   "width": 1.0,
+   "opacity": 0.6,
+   "filter": [
+    "!",
+    [
+     "in",
+     [
+      "get",
+      "STATUS"
+     ],
+     [
+      "literal",
+      [
+       "בוטל",
+       "מוקפא",
+       "בביצוע"
+      ]
+     ]
+    ]
+   ],
+   "extra": {
+    "minZoom": 12,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 0.8,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.0,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.4,
+      "minZoom": 13
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 4,
+    "lineDecorationSpacing": 9
+   }
+  },
+  "bph_infra_exist": {
+   "kind": "line",
+   "color": "@BIKE",
+   "width": 1.6,
+   "extra": {
+    "minZoom": 11,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.0,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.5,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 2.6,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "ofneidan": {
+   "kind": "line",
+   "color": "@OFN",
+   "width": 3,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "נפתח לתנועה"
+   ],
+   "label": {
+    "field": "DP_NAME",
+    "placement": "line",
+    "minZoom": 12,
+    "color": "#0F766E",
+    "size": 11,
+    "haloColor": "#ffffff",
+    "haloWidth": 2,
+    "maxWidth": 8,
+    "sizeExpression": "[\"interpolate\", [\"linear\"], [\"zoom\"], 12, 10, 16, 13]"
+   },
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "נפתח לתנועה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 2.0,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "נפתח לתנועה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 2.6,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "נפתח לתנועה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 3.8,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "nataz_planned": {
+   "kind": "line",
+   "color": "@BUS",
+   "width": 1.1,
+   "opacity": 0.6,
+   "filter": [
+    "!",
+    [
+     "==",
+     [
+      "get",
+      "STATUS"
+     ],
+     "בביצוע"
+    ]
+   ],
+   "extra": {
+    "minZoom": 11,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 0.8,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 1.1,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 1.6,
+      "minZoom": 13
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 4,
+    "lineDecorationSpacing": 9
+   }
+  },
+  "nataz_kayam": {
+   "kind": "line",
+   "color": "@BUS",
+   "width": 2.5,
+   "filter": [
+    "!=",
+    [
+     "get",
+     "STATUS"
+    ],
+    "מבוטל"
+   ],
+   "label": {
+    "field": "PTLNAME",
+    "placement": "line",
+    "minZoom": 15,
+    "color": "#8A1149",
+    "size": 11,
+    "haloColor": "#ffffff",
+    "haloWidth": 2,
+    "maxWidth": 8,
+    "sizeExpression": "[\"interpolate\", [\"linear\"], [\"zoom\"], 15, 10, 16, 13]"
+   },
+   "extra": {
+    "minZoom": 8,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 0.9,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 2.0,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "קיים",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 3.2,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "rail_strategic__plan": {
+   "source": "rail_strategic",
+   "title": "מסילות – מתוכננות / לא פעילות",
+   "kind": "line",
+   "color": "@RAIL",
+   "width": 1.4,
+   "filter": [
+    "all",
+    [
+     "!",
+     [
+      "==",
+      [
+       "get",
+       "ISACTIVE"
+      ],
+      "פעיל"
+     ]
+    ],
+    [
+     "!=",
+     [
+      "get",
+      "UPGRADE"
+     ],
+     "לגריעה"
+    ]
+   ],
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3F4651",
+      "strokeWidth": 1.0,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3F4651",
+      "strokeWidth": 1.4,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3F4651",
+      "strokeWidth": 2.0,
+      "minZoom": 13
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 5,
+    "lineDecorationSpacing": 11
+   },
+   "opacity": 0.6
+  },
+  "rail_strategic__plan_nat": {
+   "source": "rail_strategic",
+   "title": "מסילות מתוכננות (מבט ארצי)",
+   "legend": false,
+   "kind": "line",
+   "color": "@RAIL",
+   "width": 1.0,
+   "filter": [
+    "all",
+    [
+     "!",
+     [
+      "==",
+      [
+       "get",
+       "ISACTIVE"
+      ],
+      "פעיל"
+     ]
+    ],
+    [
+     "!=",
+     [
+      "get",
+      "UPGRADE"
+     ],
+     "לגריעה"
+    ]
+   ],
+   "extra": {
+    "maxZoom": 10
+   },
+   "opacity": 0.45
+  },
+  "rail_strategic": {
+   "kind": "line",
+   "color": "@RAIL",
+   "width": 2.2,
+   "filter": [
+    "==",
+    [
+     "get",
+     "ISACTIVE"
+    ],
+    "פעיל"
+   ],
+   "extra": {
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "פעיל",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3F4651",
+      "strokeWidth": 1.6,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "פעיל",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3F4651",
+      "strokeWidth": 2.4,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "פעיל",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3F4651",
+      "strokeWidth": 3.4,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "brt_line": {
+   "kind": "line",
+   "color": "@BRT",
+   "width": 1.6,
+   "filter": [
+    "!",
+    [
+     "==",
+     [
+      "get",
+      "STATUS"
+     ],
+     "בביצוע"
+    ]
+   ],
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "בתכנון / בדיקה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#D95F02",
+      "strokeWidth": 1.0,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "בתכנון / בדיקה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#D95F02",
+      "strokeWidth": 1.6,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "בתכנון / בדיקה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#D95F02",
+      "strokeWidth": 2.2,
+      "minZoom": 13
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 5,
+    "lineDecorationSpacing": 11
+   },
+   "opacity": 0.6
+  },
+  "brt_line__nat": {
+   "source": "brt_line",
+   "title": "BRT בתכנון (מבט ארצי)",
+   "legend": false,
+   "kind": "line",
+   "color": "@BRT",
+   "width": 1.0,
+   "filter": [
+    "!",
+    [
+     "==",
+     [
+      "get",
+      "STATUS"
+     ],
+     "בביצוע"
+    ]
+   ],
+   "extra": {
+    "maxZoom": 10
+   },
+   "opacity": 0.45
+  },
+  "brt_line__constr": {
+   "source": "brt_line",
+   "title": "קווי BRT – בביצוע",
+   "kind": "line",
+   "color": "@BRT",
+   "width": 3,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "בביצוע"
+   ],
+   "extra": {
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#D95F02",
+      "strokeWidth": 2.0,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#D95F02",
+      "strokeWidth": 3.6,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#D95F02",
+      "strokeWidth": 5.0,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "brt_line__constr_core": {
+   "source": "brt_line",
+   "title": "BRT בביצוע (ליבה)",
+   "legend": false,
+   "kind": "line",
+   "color": "@WHITE",
+   "width": 1,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "בביצוע"
+   ],
+   "extra": {
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "maxZoom": 10,
+      "strokeWidth": 0.6
+     },
+     {
+      "id": "r1",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 1.4
+     },
+     {
+      "id": "r2",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "minZoom": 13,
+      "strokeWidth": 2.2
+     }
+    ]
+   }
+  },
+  "metro_line": {
+   "kind": "line",
+   "color": "@METRO",
+   "width": 2.4,
+   "label": {
+    "field": "NAME",
+    "placement": "line",
+    "minZoom": 10,
+    "color": "#312E81",
+    "size": 12,
+    "haloColor": "#ffffff",
+    "haloWidth": 2,
+    "maxWidth": 8,
+    "sizeExpression": "[\"interpolate\", [\"linear\"], [\"zoom\"], 10, 11, 16, 14]"
+   },
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#312E81",
+      "strokeWidth": 1.6,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#312E81",
+      "strokeWidth": 2.4,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#312E81",
+      "strokeWidth": 3.4,
+      "minZoom": 13
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 5,
+    "lineDecorationSpacing": 12
+   },
+   "opacity": 0.65
+  },
+  "metro_line__nat": {
+   "source": "metro_line",
+   "title": "מטרו (מבט ארצי)",
+   "legend": false,
+   "kind": "line",
+   "color": "@METRO",
+   "width": 1.2,
+   "extra": {
+    "maxZoom": 10
+   },
+   "opacity": 0.5
+  },
+  "metro_line_jlm": {
+   "kind": "line",
+   "color": "@METRO",
+   "width": 2.4,
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#312E81",
+      "strokeWidth": 1.6,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#312E81",
+      "strokeWidth": 2.4,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "מתוכנן",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#312E81",
+      "strokeWidth": 3.4,
+      "minZoom": 13
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 5,
+    "lineDecorationSpacing": 12
+   },
+   "opacity": 0.65
+  },
+  "lrt_line__plan": {
+   "source": "lrt_line",
+   "title": "רכבת קלה – בתכנון",
+   "kind": "line",
+   "color": "@GREY",
+   "width": 2,
+   "filter": [
+    "!",
+    [
+     "in",
+     [
+      "get",
+      "STATUS"
+     ],
+     [
+      "literal",
+      [
+       "קיים",
+       "ביצוע"
+      ]
+     ]
+    ]
+   ],
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r1",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r2",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r3",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r4",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r5",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r6",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r7",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r8",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r9",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r10",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r11",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r12",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r13",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r14",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r15",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r16",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r17",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r18",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r19",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r20",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r21",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r22",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r23",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r24",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r25",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r26",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r27",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r28",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r29",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r30",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r31",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r32",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r33",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r34",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r35",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r36",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r37",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r38",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     },
+     {
+      "id": "r39",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "maxZoom": 10,
+      "strokeWidth": 1.2
+     },
+     {
+      "id": "r40",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 2.0
+     },
+     {
+      "id": "r41",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "minZoom": 13,
+      "strokeWidth": 2.8
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 5,
+    "lineDecorationSpacing": 12
+   },
+   "opacity": 0.6
+  },
+  "lrt_line__plan_nat": {
+   "source": "lrt_line",
+   "title": "רכבת קלה בתכנון (מבט ארצי)",
+   "legend": false,
+   "kind": "line",
+   "color": "@GREY",
+   "width": 1.0,
+   "filter": [
+    "!",
+    [
+     "in",
+     [
+      "get",
+      "STATUS"
+     ],
+     [
+      "literal",
+      [
+       "קיים",
+       "ביצוע"
+      ]
+     ]
+    ]
+   ],
+   "categorized": {
+    "prop": "NAME",
+    "map": {
+     "אדום": "#E11D48",
+     "קו אדום קיים": "#E11D48",
+     "אדום מקוקו": "#E11D48",
+     "ירוק": "#16A34A",
+     "ירוק מקוקו": "#16A34A",
+     "ירוק בהיר": "#84CC16",
+     "סגול": "#7C3AED",
+     "כחול": "#2563EB",
+     "תכלת": "#0EA5E9",
+     "צהוב": "#CA8A04",
+     "נופית": "#0D9488",
+     "ורוד": "#DB2777",
+     "חום": "#92400E",
+     "חום דרומי": "#B45309"
+    }
+   },
+   "extra": {
+    "maxZoom": 10
+   },
+   "opacity": 0.5
+  },
+  "lrt_line__constr": {
+   "source": "lrt_line",
+   "title": "רכבת קלה – בביצוע",
+   "kind": "line",
+   "color": "@GREY",
+   "width": 3,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "ביצוע"
+   ],
+   "extra": {
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r1",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r2",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r3",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r4",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r5",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r6",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r7",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r8",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r9",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r10",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r11",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r12",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r13",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r14",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r15",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r16",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r17",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r18",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r19",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r20",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r21",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r22",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r23",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r24",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r25",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r26",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r27",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r28",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r29",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r30",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r31",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r32",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r33",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r34",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r35",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r36",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r37",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r38",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r39",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r40",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r41",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     }
+    ]
+   }
+  },
+  "lrt_line__constr_core": {
+   "source": "lrt_line",
+   "title": "רכבת קלה בביצוע (ליבה)",
+   "legend": false,
+   "kind": "line",
+   "color": "@WHITE",
+   "width": 1,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "ביצוע"
+   ],
+   "extra": {
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 0.9,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 1.8,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 2.6,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "lrt_line": {
+   "kind": "line",
+   "color": "@GREY",
+   "width": 3.5,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "קיים"
+   ],
+   "label": {
+    "field": "NAME",
+    "placement": "line",
+    "minZoom": 11,
+    "color": "#1F2937",
+    "size": 12,
+    "haloColor": "#ffffff",
+    "haloWidth": 2,
+    "maxWidth": 8,
+    "sizeExpression": "[\"interpolate\", [\"linear\"], [\"zoom\"], 11, 11, 16, 14]"
+   },
+   "extra": {
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r1",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r2",
+      "label": "אדום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r3",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r4",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r5",
+      "label": "קו אדום קיים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"קו אדום קיים\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r6",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r7",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r8",
+      "label": "אדום מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"אדום מקוקו\"]",
+      "color": "#E11D48",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r9",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r10",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r11",
+      "label": "ירוק",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק\"]",
+      "color": "#16A34A",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r12",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r13",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r14",
+      "label": "ירוק מקוקו",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק מקוקו\"]",
+      "color": "#16A34A",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r15",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r16",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r17",
+      "label": "ירוק בהיר",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ירוק בהיר\"]",
+      "color": "#84CC16",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r18",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r19",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r20",
+      "label": "סגול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"סגול\"]",
+      "color": "#7C3AED",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r21",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r22",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r23",
+      "label": "כחול",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"כחול\"]",
+      "color": "#2563EB",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r24",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r25",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r26",
+      "label": "תכלת",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"תכלת\"]",
+      "color": "#0EA5E9",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r27",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r28",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r29",
+      "label": "צהוב",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"צהוב\"]",
+      "color": "#CA8A04",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r30",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r31",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r32",
+      "label": "נופית",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"נופית\"]",
+      "color": "#0D9488",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r33",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r34",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r35",
+      "label": "ורוד",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"ורוד\"]",
+      "color": "#DB2777",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r36",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r37",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r38",
+      "label": "חום",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום\"]",
+      "color": "#92400E",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     },
+     {
+      "id": "r39",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "maxZoom": 10,
+      "strokeWidth": 2.4
+     },
+     {
+      "id": "r40",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "strokeWidth": 4.0
+     },
+     {
+      "id": "r41",
+      "label": "חום דרומי",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"NAME\"], \"חום דרומי\"]",
+      "color": "#B45309",
+      "minZoom": 13,
+      "strokeWidth": 5.6
+     }
+    ]
+   }
+  },
+  "mataan_jlm_2040": {
+   "kind": "line",
+   "color": "@GREY",
+   "width": 1.8,
+   "visible": false,
+   "categorized": {
+    "prop": "COLOR",
+    "map": "@LRT"
+   },
+   "extra": {
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 5,
+    "lineDecorationSpacing": 12,
+    "minZoom": 10
+   },
+   "opacity": 0.6
+  },
+  "mataan_jlm_2050": {
+   "kind": "line",
+   "color": "@GREY",
+   "width": 1.8,
+   "visible": false,
+   "categorized": {
+    "prop": "LINE_NAME",
+    "map": "@EN"
+   },
+   "extra": {
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 5,
+    "lineDecorationSpacing": 12,
+    "minZoom": 10
+   },
+   "opacity": 0.6
+  },
+  "rail_stat": {
+   "kind": "point",
+   "color": "@RAIL",
+   "radius": 4,
+   "categorized": {
+    "prop": "STATUS",
+    "map": {
+     "נוסעים": "@RAIL",
+     "בבניה": "#9CA3AF"
+    }
+   },
+   "label": {
+    "field": "ASSET_NAME",
+    "placement": "point",
+    "minZoom": 11,
+    "color": "#1F2937",
+    "size": 12,
+    "haloColor": "#ffffff",
+    "haloWidth": 2,
+    "maxWidth": 8,
+    "anchor": "top",
+    "offsetY": 0.9,
+    "priorityExpression": "1"
+   },
+   "extra": {
+    "strokeColor": "#FFFFFF",
+    "strokeWidth": 1.2,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "נוסעים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"STATUS\"], \"נוסעים\"]",
+      "color": "#3F4651",
+      "maxZoom": 10,
+      "circleRadius": 2.6
+     },
+     {
+      "id": "r1",
+      "label": "נוסעים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"STATUS\"], \"נוסעים\"]",
+      "color": "#3F4651",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "circleRadius": 3.5
+     },
+     {
+      "id": "r2",
+      "label": "נוסעים",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"STATUS\"], \"נוסעים\"]",
+      "color": "#3F4651",
+      "minZoom": 13,
+      "circleRadius": 5
+     },
+     {
+      "id": "r3",
+      "label": "בבניה",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"STATUS\"], \"בבניה\"]",
+      "color": "#9CA3AF",
+      "maxZoom": 10,
+      "circleRadius": 2.6
+     },
+     {
+      "id": "r4",
+      "label": "בבניה",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"STATUS\"], \"בבניה\"]",
+      "color": "#9CA3AF",
+      "minZoom": 10,
+      "maxZoom": 13,
+      "circleRadius": 3.5
+     },
+     {
+      "id": "r5",
+      "label": "בבניה",
+      "isElse": false,
+      "filter": "[\"==\", [\"get\", \"STATUS\"], \"בבניה\"]",
+      "color": "#9CA3AF",
+      "minZoom": 13,
+      "circleRadius": 5
+     }
+    ]
+   }
+  },
+  "metro_stat": {
+   "kind": "point",
+   "color": "@WHITE",
+   "radius": 3.5,
+   "label": {
+    "field": "NAME",
+    "placement": "point",
+    "minZoom": 13,
+    "color": "#312E81",
+    "size": 11,
+    "haloColor": "#ffffff",
+    "haloWidth": 2,
+    "maxWidth": 8,
+    "anchor": "top",
+    "offsetY": 0.8
+   },
+   "extra": {
+    "strokeColor": "#312E81",
+    "strokeWidth": 2,
+    "minZoom": 11
+   }
+  },
+  "lrt_stat": {
+   "kind": "point",
+   "color": "@WHITE",
+   "radius": 3.5,
+   "categorized": {
+    "prop": "STATUS",
+    "map": {
+     "קיימת": "#1F2937",
+     "מתוכננת": "#FFFFFF"
+    }
+   },
+   "label": {
+    "field": "STAT_NAME",
+    "placement": "point",
+    "minZoom": 14,
+    "color": "#1F2937",
+    "size": 11,
+    "haloColor": "#ffffff",
+    "haloWidth": 2,
+    "maxWidth": 8,
+    "anchor": "top",
+    "offsetY": 0.8,
+    "dedupe": "unique"
+   },
+   "extra": {
+    "strokeColor": "#1F2937",
+    "strokeWidth": 1.5,
+    "minZoom": 12
+   }
+  },
+  "rail_strat_station": {
+   "kind": "point",
+   "color": "@WHITE",
+   "radius": 4,
+   "visible": false,
+   "extra": {
+    "strokeColor": "#3F4651",
+    "strokeWidth": 2
+   }
+  },
+  "tma42_roads": {
+   "kind": "line",
+   "color": "#64748b",
+   "width": 2,
+   "categorized": {
+    "prop": "MAVAT_NAME",
+    "map": {
+     "דרך מהירה": "#b91c1c",
+     "דרך רבת קיבולת": "#dc2626",
+     "דרך ראשית": "#f97316",
+     "דרך אזורית": "#a16207",
+     "דרך בלעדית לתחבורה ציבורית": "@BUS_E",
+     "דרך במנהור": "#475569",
+     "דרך לגריעה מותנית": "#cbd5e1",
+     "הנחיות מיוחדות לדרך": "#94a3b8"
+    }
+   },
+   "label": {
+    "field": "NAME",
+    "placement": "line",
+    "minZoom": 12
+   },
+   "_note": "מועמדת – לא בבסיס v3 עד אישור"
+  },
+  "ofneidan__constr": {
+   "source": "ofneidan",
+   "title": "אופנידן – בביצוע",
+   "kind": "line",
+   "color": "@OFN",
+   "width": 3,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "ביצוע"
+   ],
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 2.2,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 3.2,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 4.4,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "ofneidan__constr_core": {
+   "source": "ofneidan",
+   "title": "אופנידן בביצוע (ליבה)",
+   "legend": false,
+   "kind": "line",
+   "color": "@WHITE",
+   "width": 1,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "ביצוע"
+   ],
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 1,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 1.4,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 2,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "ofneidan__plan": {
+   "source": "ofneidan",
+   "title": "אופנידן – בתכנון",
+   "kind": "line",
+   "color": "@OFN",
+   "width": 1.6,
+   "filter": [
+    "in",
+    [
+     "get",
+     "STATUS"
+    ],
+    [
+     "literal",
+     [
+      "תכנון",
+      "הליך מכרזי",
+      "ייזום",
+      "לא הוקצה"
+     ]
+    ]
+   ],
+   "extra": {
+    "minZoom": 11,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "בתכנון",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 1.2,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "בתכנון",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 1.6,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "בתכנון",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#0F766E",
+      "strokeWidth": 2.2,
+      "minZoom": 13
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 5,
+    "lineDecorationSpacing": 10
+   },
+   "opacity": 0.6
+  },
+  "nataz_planned__constr": {
+   "source": "nataz_planned",
+   "title": "נת״צ – בביצוע",
+   "kind": "line",
+   "color": "@BUS",
+   "width": 2.4,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "בביצוע"
+   ],
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 1.4,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 2.6,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#B0185E",
+      "strokeWidth": 3.8,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "nataz_planned__constr_core": {
+   "source": "nataz_planned",
+   "title": "נת״צ בביצוע (ליבה)",
+   "legend": false,
+   "kind": "line",
+   "color": "@WHITE",
+   "width": 1,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "בביצוע"
+   ],
+   "extra": {
+    "minZoom": 10,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 0.5,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 1.0,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 1.5,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "bph_infra_plan__constr": {
+   "source": "bph_infra_plan",
+   "title": "תשתית רכיבה – בביצוע",
+   "kind": "line",
+   "color": "@BIKE",
+   "width": 2,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "בביצוע"
+   ],
+   "extra": {
+    "minZoom": 12,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.4,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 2.0,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 3.0,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "bph_infra_plan__constr_core": {
+   "source": "bph_infra_plan",
+   "title": "תשתית רכיבה בביצוע (ליבה)",
+   "legend": false,
+   "kind": "line",
+   "color": "@WHITE",
+   "width": 1,
+   "filter": [
+    "==",
+    [
+     "get",
+     "STATUS"
+    ],
+    "בביצוע"
+   ],
+   "extra": {
+    "minZoom": 12,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 0.5,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 0.8,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 1.2,
+      "minZoom": 13
+     }
+    ]
+   }
+  },
+  "bicycle_jer_2019__plan": {
+   "source": "bicycle_jer_2019",
+   "title": "שבילי אופניים ירושלים 2019 – בתכנון",
+   "kind": "line",
+   "color": "@BIKE",
+   "width": 1,
+   "opacity": 0.6,
+   "visible": false,
+   "filter": [
+    "!",
+    [
+     "==",
+     [
+      "get",
+      "status"
+     ],
+     "קיים"
+    ]
+   ],
+   "extra": {
+    "minZoom": 11,
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "בתכנון",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 0.8,
+      "maxZoom": 10
+     },
+     {
+      "id": "r1",
+      "label": "בתכנון",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.0,
+      "minZoom": 10,
+      "maxZoom": 13
+     },
+     {
+      "id": "r2",
+      "label": "בתכנון",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#3B8A00",
+      "strokeWidth": 1.4,
+      "minZoom": 13
+     }
+    ],
+    "lineDecoration": "square",
+    "lineDecorationColor": "#ffffff",
+    "lineDecorationSize": 4,
+    "lineDecorationSpacing": 9
+   }
+  },
+  "road22_jlm": {
+   "kind": "line",
+   "color": "@ROAD_NEW",
+   "width": 5,
+   "label": {
+    "field": "name",
+    "placement": "line",
+    "minZoom": 14,
+    "color": "@ROAD_NEW_INK",
+    "size": 12,
+    "haloColor": "#ffffff",
+    "haloWidth": 2,
+    "maxWidth": 8,
+    "sizeExpression": "[\"interpolate\",[\"linear\"],[\"zoom\"],14,11,16,14]"
+   },
+   "extra": {
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#6D28D9",
+      "strokeWidth": 3,
+      "maxZoom": 13
+     },
+     {
+      "id": "r1",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#6D28D9",
+      "strokeWidth": 5,
+      "minZoom": 13,
+      "maxZoom": 15
+     },
+     {
+      "id": "r2",
+      "label": "בביצוע",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#6D28D9",
+      "strokeWidth": 7,
+      "minZoom": 15
+     }
+    ]
+   }
+  },
+  "road22_jlm__core": {
+   "source": "road22_jlm",
+   "title": "כביש 22 (ירושלים) – בביצוע (ליבה)",
+   "legend": false,
+   "kind": "line",
+   "color": "@WHITE",
+   "width": 2,
+   "extra": {
+    "vectorStyleMode": "rule-based",
+    "vectorRules": [
+     {
+      "id": "r0",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 1.2,
+      "maxZoom": 13
+     },
+     {
+      "id": "r1",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 2.2,
+      "minZoom": 13,
+      "maxZoom": 15
+     },
+     {
+      "id": "r2",
+      "label": "ליבה",
+      "isElse": false,
+      "filter": "[\"all\"]",
+      "color": "#FFFFFF",
+      "strokeWidth": 3.2,
+      "minZoom": 15
+     }
+    ]
+   }
+  },
+  "hh_companies": {
+   "kind": "point",
+   "color": "@POI_CO",
+   "radius": 6,
+   "extra": {
+    "strokeColor": "#ffffff",
+    "strokeWidth": 1.5
+   },
+   "label": {
+    "field": "name_he",
+    "placement": "point",
+    "minZoom": 14,
+    "anchor": "top",
+    "offsetY": 1,
+    "color": "@POI_CO_INK"
+   }
+  }
+ },
+ "zoom_bands": {
+  "national": "z<10",
+  "metro": "10<=z<13",
+  "city": "z>=13"
+ },
+ "layer_stack_bottom_to_top": [
+  "bicycle_jer_2019__plan",
+  "bicycle_jer_2019",
+  "bph_infra_plan",
+  "bph_infra_plan__constr",
+  "bph_infra_plan__constr_core",
+  "bph_infra_exist",
+  "ofneidan__plan",
+  "ofneidan",
+  "ofneidan__constr",
+  "ofneidan__constr_core",
+  "nataz_planned",
+  "nataz_planned__constr",
+  "nataz_planned__constr_core",
+  "nataz_kayam",
+  "road22_jlm",
+  "road22_jlm__core",
+  "mataan_jlm_2040",
+  "mataan_jlm_2050",
+  "rail_strategic__plan_nat",
+  "rail_strategic__plan",
+  "rail_strategic",
+  "brt_line__nat",
+  "brt_line",
+  "brt_line__constr",
+  "brt_line__constr_core",
+  "metro_line__nat",
+  "metro_line_jlm",
+  "metro_line",
+  "lrt_line__plan_nat",
+  "lrt_line__plan",
+  "lrt_line__constr",
+  "lrt_line__constr_core",
+  "lrt_line",
+  "rail_strat_station",
+  "rail_stat",
+  "metro_stat",
+  "lrt_stat",
+  "hh_companies"
+ ],
+ "_stack_note": "layer_stack_bottom_to_top קובע את סדר הציור (האחרון למעלה). שכבות פרויקט מצוירות מעל כל שכבות הבסיס.",
+ "_derived_note": "שכבה עם 'source' = שכבה נגזרת: אותם נתונים ואותה גרסה כמו שכבת המקור ברשום, עם filter וסגנון משלה (למשל קו חלול = שכבת צבע + שכבת ליבה לבנה).",
+ "override_policy": {
+  "_doc": "כללי style_overrides בפרויקט (נאכפים ב־lib.compose)",
+  "base_layer_allowed_keys": [
+   "visible",
+   "width",
+   "label",
+   "extra.minZoom",
+   "extra.maxZoom"
+  ],
+  "forbidden_on_base_layers": "צבע, palette, categorized, filter, planned, lineDecoration*, vectorRules – קידוד הסטטוס (רציף/חלול/מקווקו) והפלטה קבועים לכל הפרויקטים; opacity (חלק מקידוד הסטטוס)",
+  "merge": "deep merge; רשימות (vectorRules, filter, customEntries.items) מוחלפות בשלמותן; כמה פרויקטים – האחרון בשורת הפקודה גובר, עם אזהרה על התנגשות",
+  "project_layers": "שכבות של הפרויקט חופשיות, אבל צבעים צריכים להיות טוקנים מה־palette (@TOKEN)"
+ },
+ "status_encoding": {
+  "_doc": "צבע = משפחת תשתית; סגנון = סטטוס. רוחבים לפי zoom_bands (ארצי / מטרופולין / עיר).",
+  "existing": "עבה, רציף, opacity 1",
+  "under_construction": "חלול: מסגרת בצבע המשפחה + ליבה לבנה",
+  "planned": "דק, ריבועים לבנים (מקווקו), opacity 0.6"
+ },
+ "_groups_note": "קבוצות ריקות לא נכתבות לקובץ. קבוצות של חבילה אזורית מוגדרות ב־regions/<id>/<ver>/manifest.json."
+}

@@ -1,0 +1,109 @@
+{
+ "_doc": "הגדרת החבילה האזורית 'ירושלים'. שכבות שרלוונטיות רק לירושלים (לא נכנסות למפת הבסיס הארצית). make_region.py מקפיא את ההגדרה לגרסה j<N> ב־regions/jerusalem/j<N>/manifest.json (לא ניתנת לשינוי). פרויקט מצמיד בסיס + חבילה: \"regions\": [{\"id\":\"jerusalem\",\"version\":\"j1\"}].",
+ "region": "jerusalem",
+ "title": "ירושלים",
+ "description": "חבילה אזורית – ירושלים: תוכניות מתע״ן ירושלים 2040/2050, מטרו ירושלים, שבילי אופניים ירושלים 2019, כביש 22 (בביצוע) וחברות/משרדים בהר החוצבים.",
+ "current": "j1",
+ "style_min": "s3.0",
+ "map_view": {
+  "center": [
+   35.2,
+   31.79
+  ],
+  "zoom": 12.5
+ },
+ "bbox": [
+  35.08,
+  31.7,
+  35.3,
+  31.88
+ ],
+ "groups": [
+  {
+   "id": "g_r_jerusalem",
+   "name": "ירושלים (חבילה אזורית)",
+   "collapsed": false
+  },
+  {
+   "id": "g_jlm_mataan",
+   "name": "מתע״ן ירושלים – תוכניות ומטרו",
+   "parent": "g_r_jerusalem",
+   "collapsed": true
+  },
+  {
+   "id": "g_jlm_bike",
+   "name": "אופניים – ירושלים",
+   "parent": "g_r_jerusalem",
+   "collapsed": true
+  },
+  {
+   "id": "g_jlm_roads",
+   "name": "כבישים חדשים",
+   "parent": "g_r_jerusalem",
+   "collapsed": false
+  },
+  {
+   "id": "g_jlm_poi",
+   "name": "חברות ומשרדים – הר החוצבים",
+   "parent": "g_r_jerusalem",
+   "collapsed": false
+  }
+ ],
+ "layers": [
+  {
+   "id": "metro_line_jlm",
+   "group": "g_jlm_mataan"
+  },
+  {
+   "id": "mataan_jlm_2040",
+   "group": "g_jlm_mataan"
+  },
+  {
+   "id": "mataan_jlm_2050",
+   "group": "g_jlm_mataan"
+  },
+  {
+   "id": "bicycle_jer_2019",
+   "group": "g_jlm_bike"
+  },
+  {
+   "id": "road22_jlm",
+   "group": "g_jlm_roads"
+  },
+  {
+   "id": "hh_companies",
+   "group": "g_jlm_poi"
+  }
+ ],
+ "legend_order": [
+  "road22_jlm",
+  "hh_companies",
+  "metro_line_jlm",
+  "mataan_jlm_2040",
+  "mataan_jlm_2050",
+  "bicycle_jer_2019"
+ ],
+ "bookmarks": [
+  {
+   "id": "jlm-center",
+   "name": "ירושלים – מרכז",
+   "lng": 35.215,
+   "lat": 31.782,
+   "zoom": 13.4
+  },
+  {
+   "id": "jlm-har-hotzvim",
+   "name": "ירושלים – הר החוצבים וכביש 22",
+   "lng": 35.214,
+   "lat": 31.806,
+   "zoom": 14.8
+  }
+ ],
+ "drive": {
+  "folder_id": "1d44xFuzXltAaACjj_daYRaENBRXITuMw",
+  "folder_name": "ירושלים – חבילה אזורית",
+  "parent_folder_id": "1FXJJjrB6ppsCjv1HFHneKLkIGdqTmEQp",
+  "layer_folder_id": "1_4LCB4rIXmfB_YxjHHzFv06PHFfcyG2q",
+  "manifest_j1_file_id": "1_yJd6oPw25HQ8DehYrjQNHTLF_EXEFz-"
+ }
+}
