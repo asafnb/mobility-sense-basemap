@@ -2,7 +2,7 @@
 Usage: python scripts/export_toolkit.py > /tmp/toolkit_files.json"""
 import os,sys,json,glob; sys.path.insert(0,os.path.dirname(__file__)); from lib import *
 reg=registry(); files=[]
-pats=["README.md","requirements.txt",".gitignore","scripts/*.py","scripts/*.mjs","style/*.json","style/tools/*.py","style/releases/*/RELEASE.md","style/releases/*/drive.json","style/versions/*.json","layers/layers.json","base/CHANGELOG.md","base/*/manifest.json",
+pats=["README.md","requirements.txt",".gitignore","scripts/*.py","scripts/*.mjs","style/*.json","style/tools/*.py","style/releases/*/RELEASE.md","style/releases/*/drive.json","style/versions/*.json","layers/layers.json","base/CHANGELOG.md","base/*/manifest.json","regions/*/region.json","regions/*/*/manifest.json","regions/*/CHANGELOG.md","regions/*/README.md",
       "projects/*/project.json","projects/*/README.md","projects/*/history/*.json","publish/*.json"]
 for p in pats: files+=sorted(glob.glob(f"{ROOT}/{p}"))
 for lid,L in reg['layers'].items():
