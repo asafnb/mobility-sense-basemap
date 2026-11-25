@@ -1,15 +1,16 @@
 {
  "_doc": "הקובץ בקישור הלחיצה האחת: מפת הבסיס הארצית בלבד (מ־v5 ירושלים והפרויקטים לא נכללים; לכל פרויקט קישור משלו ב־projects/<slug>.web.geolibre.json). שם הקובץ בגיטהאב קבוע.",
- "base_version": "v5",
+ "base_version": "v6",
  "projects": [],
- "tag": "v5",
+ "tag": "v6",
  "name": "Mobility Sense – מפת בסיס ישראל",
  "github_path": "mobility-sense-base.geolibre.json",
  "last_published": {
-  "date": "2026-10-23",
-  "commit": "6abc67f183cdaa4ce638ac408c93d5f8dfb47a48",
-  "file": "dist/showcase_v5.web.geolibre.json",
-  "bytes": 3196366
+  "date": "2026-11-25",
+  "commit": null,
+  "file": "dist/mobility-sense-base_v6.web.geolibre.json",
+  "bytes": 3192025,
+  "note": "web copy spliced: LRT layers rebuilt by compose()+web_slim(), all other layers taken unchanged from the v5 web copy (scripts/manual/splice_web_v6.py)"
  },
  "regions": []
 }

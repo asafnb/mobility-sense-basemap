@@ -8,7 +8,7 @@ ap.add_argument('--add',action='append',default=[]); ap.add_argument('--remove',
 a=ap.parse_args(); reg=registry()
 out=f"{ROOT}/base/{a.version}/manifest.json"
 if os.path.exists(out): sys.exit(f"{a.version} exists – base versions are immutable")
-bases=sorted(glob.glob(f"{ROOT}/base/v*/manifest.json"),key=lambda p:int(p.split('/')[-2][1:]))
+bases=sorted(glob.glob(f"{ROOT}/base/v*/manifest.json"),key=lambda p:int(os.path.basename(os.path.dirname(p))[1:]))
 prev=load_json(f"{ROOT}/base/{a.prev}/manifest.json") if a.prev else (load_json(bases[-1]) if bases else None)
 sv=a.style or load_json(style_file(released_styles()[-1]))['style_version']; load_style(sv)
 ids=[l['id'] for l in prev['layers']] if prev else []
