@@ -1,6 +1,6 @@
 {
  "registry_version": 2,
- "updated": "2026-10-23",
+ "updated": "2026-11-25",
  "github_size_limit_bytes": 512000,
  "_doc": "כל שכבה: מטא־דאטה + רשימת גרסאות. קבצים מתוארכים ב־data/layers/<id>/<id>_<YYYY-MM>.geojson; אף פעם לא דורסים גרסה. storage=github → נכנס לריפו (קטן); drive → רק בדרייב. | scope: national = שכבת בסיס ארצית; region:<id> = שכבה של חבילה אזורית (regions/<id>/), לא נכנסת לבסיס.",
  "layers": {
@@ -500,7 +500,7 @@
     "fields": null,
     "merge": false
    },
-   "current": "2026-10",
+   "current": "2026-11",
    "versions": [
     {
      "version": "2026-10",
@@ -514,6 +514,20 @@
      "drive_file_id": "1dI2ttSCDXyUGMp10eS1jhRUS0jQR1vbF",
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    },
+    {
+     "version": "2026-11",
+     "data_date": "2026-11-25",
+     "source_modified": null,
+     "file": "data/layers/lrt_line/lrt_line_2026-11.geojson",
+     "bytes": 295850,
+     "features": 30,
+     "sha256": "0800ed8815de2d97",
+     "storage": "github+drive",
+     "drive_file_id": null,
+     "changes": "עדכון ידני של סטטוס בירושלים בלבד (25.11.2026), הגאומטריה ממשרד התחבורה ללא שינוי מלבד חיתוך בתחנות: 'אדום' נווה יעקב–הדסה עין כרם = קיים (פועל מ־2/2025); 'ירוק מקוקו' מלחה–שער שכם = קיים (L3, נפתח 21.8.2026, הוארך 10.11.2026), הקצה מודעי–מלחה נשאר תכנון; 'ירוק' פוצל: גילה–גוננים = ביצוע (L4, נסיעות מבחן, פתיחה מתוכננת 12/2026), גוננים–בנייני האומה = קיים (משותף עם L3), בנייני האומה–הר הצופים = ביצוע (2027). 27→30 ישויות. שאר הארץ זהה ל־2026-10. מקורות הסטטוס: פרסומי חדשות 8–11/2026 וויקיפדיה, לא עדכון של data.gov.il. סקריפט: scripts/manual/lrt_jerusalem_2026-11.py",
+     "previous": "2026-10",
+     "manual_edit": true
     }
    ],
    "scope": "national"
@@ -566,7 +580,7 @@
     "fields": null,
     "merge": false
    },
-   "current": "2026-10",
+   "current": "2026-11",
    "versions": [
     {
      "version": "2026-10",
@@ -580,6 +594,20 @@
      "drive_file_id": "1E1OZS68xOgB3noj2dynCX5e0vF1ocCHS",
      "drive_note": "קובץ הדרייב נקרא בשם הישן <id>.geojson (תוכן זהה)",
      "changes": "גרסה ראשונה ברג'יסטרי (הורדה מ־data.gov.il ב־14.10.2026)"
+    },
+    {
+     "version": "2026-11",
+     "data_date": "2026-11-25",
+     "source_modified": null,
+     "file": "data/layers/lrt_stat/lrt_stat_2026-11.geojson",
+     "bytes": 141210,
+     "features": 332,
+     "sha256": "7c0ff7a22b124347",
+     "storage": "github+drive",
+     "drive_file_id": null,
+     "changes": "עדכון ידני של סטטוס בירושלים בלבד (25.11.2026): 24 תחנות עברו מ'מתוכננת' ל'קיימת' – 12 בהארכות הקו האדום (נווה יעקב, קריית יובל–הדסה עין כרם) ו־12 בקו L3 (מלחה–בנייני האומה). תחנות גילה נשארו 'מתוכננת' עד הפתיחה. מיקומים ושאר השדות ללא שינוי. סקריפט: scripts/manual/lrt_jerusalem_2026-11.py",
+     "previous": "2026-10",
+     "manual_edit": true
     }
    ],
    "scope": "national"
